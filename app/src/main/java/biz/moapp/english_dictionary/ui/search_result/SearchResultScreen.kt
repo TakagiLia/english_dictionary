@@ -9,20 +9,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.text.font.FontWeight
+import biz.moapp.english_dictionary.DataMock.englishCoOccurrences
+import biz.moapp.english_dictionary.DataMock.englishExampleSentences
+import biz.moapp.english_dictionary.DataMock.englishSynonyms
+import biz.moapp.english_dictionary.DataMock.japaneseMeanings
 import biz.moapp.english_dictionary.R
 
 @SuppressLint("ResourceType")
 @Composable
 fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyWord"){
     Column(modifier = modifier.fillMaxSize()) {
-//        Text(text = "SearchResultScreen:$keyWord")
-
         /**タブ名前取得**/
         val tabLabels = stringArrayResource(R.array.tab_labels)
         /**タブインデックスの保持**/
@@ -50,11 +51,10 @@ fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyW
 
         /**インデックスによってタブ内容が切り替わる**/
         when(selectedTabIndex){
-            0 -> { TabContent(modifier,keyWord ?: "No keyWord") }
-            1 -> { TabContent(modifier,"例文") }
-            2 -> { TabContent(modifier,"類義語") }
-            3 -> { TabContent(modifier,"共起表現") }
+            0 -> { MeanTab(modifier,keyWord ?: "No keyWord", japaneseMeanings) }
+            1 -> { ExampleTab(modifier,englishExampleSentences) }
+            2 -> { Synonyms(modifier,englishSynonyms) }
+            3 -> { Collocation(modifier,englishCoOccurrences) }
         }
-
     }
 }
