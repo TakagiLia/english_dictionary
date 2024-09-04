@@ -38,8 +38,7 @@ fun TopScreen(modifier: Modifier = Modifier, topScreenViewModel: TopScreenViewMo
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             items(filterData.value) { data ->
-                Text(text = data.englishMean)
-                Spacer(modifier = Modifier.height(8.dp))
+                ListItem(data)
             }
         }
     }
