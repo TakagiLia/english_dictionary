@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Shapes
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,7 +26,7 @@ import biz.moapp.english_dictionary.navigation.Nav
 @Composable
 fun ListItem(data : Language, onClick: () -> Unit){
     Row(modifier = Modifier.padding(bottom = 0.5.dp)
-        .border(width = 1.dp, color = Color.LightGray, shape = RoundedCornerShape(4.dp))
+//        .border(width = 1.dp, color = Color.LightGray, shape = RoundedCornerShape(4.dp))
         .fillMaxWidth()
         .clickable { onClick() },
     ){
@@ -42,4 +43,5 @@ fun ListItem(data : Language, onClick: () -> Unit){
             Spacer(modifier = Modifier.height(4.dp))
         }
     }
+    HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
 }
