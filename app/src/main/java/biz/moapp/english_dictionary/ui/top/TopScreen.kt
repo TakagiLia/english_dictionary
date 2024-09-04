@@ -31,12 +31,11 @@ fun TopScreen(modifier: Modifier = Modifier,
     ) {
         /**検索バー**/
         SearchBar(modifier, topScreenViewModel)
-        Spacer(modifier = Modifier.height(8.dp))
 
         /**単語表示**/
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(16.dp),
+            contentPadding = PaddingValues(horizontal = 8.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             items(filterData.value) { data ->
