@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import biz.moapp.english_dictionary.DataMock.EnglishSynonym
 
 @Composable
-fun Synonyms(modifier: Modifier = Modifier, data: List<EnglishSynonym>){
+fun SynonymsTab(modifier: Modifier = Modifier, data: List<EnglishSynonym>){
     Column( modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.Start) {

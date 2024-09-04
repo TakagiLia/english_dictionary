@@ -53,7 +53,7 @@ fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyW
         when(selectedTabIndex){
             0 -> { MeanTab(modifier,keyWord ?: "No keyWord", japaneseMeanings) }
             1 -> { ExampleTab(modifier,englishExampleSentences) }
-            2 -> { Synonyms(modifier,englishSynonyms) }
+            2 -> { SynonymsTab(modifier,englishSynonyms) }
             3 -> { Collocation(modifier,englishCoOccurrences) }
         }
     }
