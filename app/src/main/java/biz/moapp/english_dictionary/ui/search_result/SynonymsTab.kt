@@ -30,7 +30,6 @@ fun SynonymsTab(modifier: Modifier = Modifier, data: List<EnglishSynonym>){
                 horizontalAlignment = Alignment.Start
             ) {
                items(data){
-                   HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
                    Spacer(modifier = Modifier.height(8.dp))
                    Row {
                        Text(text = "英語：${it.eng}, ")

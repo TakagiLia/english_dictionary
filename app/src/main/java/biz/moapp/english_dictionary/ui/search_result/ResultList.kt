@@ -19,7 +19,6 @@ fun ResultList(data: List<String>){
         horizontalAlignment = Alignment.Start
     ) {
         items(data) { value ->
-            HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
             Spacer(modifier = Modifier.height(8.dp))
             Text(text = "・${value}")
             Spacer(modifier = Modifier.height(8.dp))
