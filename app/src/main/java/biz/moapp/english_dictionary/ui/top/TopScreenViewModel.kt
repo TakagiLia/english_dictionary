@@ -29,13 +29,13 @@ class TopScreenViewModel : ViewModel() {
                             }
                             emptyList()
                         }
-        _filterData.value = _csvData.value
+//        _filterData.value = _csvData.value
     }
 
     /**検索欄から文字を検索**/
     fun searchLanguage(word : String){
         _filterData.value = if (word.isBlank()) {
-            _csvData.value
+           emptyList()
         } else {
             _csvData.value.filter { value ->
                 value.englishMean.startsWith(word)
