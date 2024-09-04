@@ -9,6 +9,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -31,9 +34,9 @@ fun SearchBar(modifier: Modifier = Modifier,
 
     var text by remember { mutableStateOf("") }
 
-    Row(horizontalArrangement = Arrangement.Center,
+    Row(modifier = Modifier.padding(horizontal = 8.dp),
+        horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.Top) {
-
         BasicTextField(
             value = text,
             onValueChange = { inputText ->
@@ -46,21 +49,25 @@ fun SearchBar(modifier: Modifier = Modifier,
             modifier = Modifier
                 .border(1.dp, Color.Gray, RectangleShape)
                 .padding(6.dp)
-                .fillMaxWidth(0.7f),
+                .fillMaxWidth(),
             decorationBox = { innerTextField ->
                 /**プレースホルダー**/
-                Row(Modifier.padding(8.dp).horizontalScroll(rememberScrollState())) {
+                Row(
+                    Modifier
+                        .padding(8.dp)
+                        .horizontalScroll(rememberScrollState())) {
                     if (text.isEmpty()) {
+                        Icon(imageVector = Icons.Filled.Search, contentDescription = "")
                         Text(
                             "検索したい単語を入力",
                             color = Color.Gray,
-                            fontSize = 20.sp
+                            fontSize = 16.sp
                         )
                     }
                     innerTextField()
                 }
             },
-            textStyle = TextStyle(fontSize = 20.sp),
+            textStyle = TextStyle(fontSize = 16.sp),
         )
     }
 }
