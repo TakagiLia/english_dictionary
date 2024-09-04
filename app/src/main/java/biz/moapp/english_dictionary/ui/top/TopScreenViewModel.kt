@@ -11,8 +11,12 @@ import kotlinx.coroutines.flow.asStateFlow
 import java.io.IOException
 
 class TopScreenViewModel : ViewModel() {
+
     private val _csvData = MutableStateFlow<List<Language>>(emptyList())
     val csvData: StateFlow<List<Language>> = _csvData.asStateFlow()
+
+    private val _filterData = MutableStateFlow<List<Language>>(emptyList())
+    val filterData: StateFlow<List<Language>> = _filterData.asStateFlow()
 
     /**AssetからCSV読み込み csvDataで保持**/
     fun readCsvDataFromAsset(context : Context){
@@ -25,5 +29,17 @@ class TopScreenViewModel : ViewModel() {
                             }
                             emptyList()
                         }
+        _filterData.value = _csvData.value
+    }
+
+    /**検索欄から文字を検索**/
+    fun searchLanguage(word : String){
+        _filterData.value = if (word.isBlank()) {
+            _csvData.value
+        } else {
+            _csvData.value.filter { value ->
+                value.englishMean.startsWith(word)
+            }
+        }
     }
 }
