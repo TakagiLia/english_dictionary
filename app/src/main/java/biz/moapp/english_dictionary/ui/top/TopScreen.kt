@@ -1,6 +1,5 @@
 package biz.moapp.english_dictionary.ui.top
 
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -13,26 +12,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import biz.moapp.english_dictionary.FileUtil.readCsvDataFromAssets
-import java.io.IOException
 
 @Composable
-fun TopScreen(modifier: Modifier = Modifier) {
-
-    val context = LocalContext.current
-
-    /**AssetからCSV読み込み**/
-    val csvData =  runCatching { readCsvDataFromAssets(context) }
-        .getOrElse { e ->
-            if (e is IOException) {
-                Log.e("CSV Read Error", "Error reading CSV file", e)
-            } else {
-                Log.e("CSV Read Error", "An unexpected error occurred", e)
-            }
-            emptyList()
-        }
+fun TopScreen(modifier: Modifier = Modifier, topScreenViewModel: TopScreenViewModel) {
 
     /**UI**/
     Column(
@@ -42,7 +25,7 @@ fun TopScreen(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         /**検索バー**/
-        SearchBar(modifier)
+        SearchBar(modifier, {})
         Spacer(modifier = Modifier.height(8.dp))
 
         /**単語表示**/
@@ -51,7 +34,7 @@ fun TopScreen(modifier: Modifier = Modifier) {
             contentPadding = PaddingValues(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            items(csvData) { data ->
+            items(topScreenViewModel.csvData.value) { data ->
                 Text(text = data.englishMean)
                 Spacer(modifier = Modifier.height(8.dp))
             }
