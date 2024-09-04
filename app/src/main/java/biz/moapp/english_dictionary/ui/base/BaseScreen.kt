@@ -8,10 +8,11 @@ import androidx.compose.ui.Modifier
 import biz.moapp.english_dictionary.ui.common.BottomBar
 import biz.moapp.english_dictionary.ui.common.TopBar
 import biz.moapp.english_dictionary.ui.top.TopScreen
+import biz.moapp.english_dictionary.ui.top.TopScreenViewModel
 
 @Composable
-fun BaseScreen() {
+fun BaseScreen(topScreenViewModel: TopScreenViewModel) {
     Scaffold(modifier = Modifier.fillMaxSize(), topBar = { TopBar() }, bottomBar = { BottomBar()}){  innerPadding ->
-        TopScreen(Modifier.padding(innerPadding))
+        TopScreen(Modifier.padding(innerPadding), topScreenViewModel)
     }
 }
