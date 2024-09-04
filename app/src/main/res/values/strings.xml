@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">english_dictionary</string>
+    <!--タブで利用-->
+    <array name="tab_labels">
+        <item>意味</item>
+        <item>例文</item>
+        <item>類語</item>
+        <item>共起表現</item>
+    </array>
 </resources>
