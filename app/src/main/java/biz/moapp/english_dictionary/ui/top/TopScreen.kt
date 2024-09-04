@@ -17,14 +17,15 @@ import androidx.navigation.NavController
 import biz.moapp.english_dictionary.navigation.Nav
 
 @Composable
-fun TopScreen(modifier: Modifier = Modifier, topScreenViewModel: TopScreenViewModel,navController: NavController) {
+fun TopScreen(modifier: Modifier = Modifier,
+              topScreenViewModel: TopScreenViewModel,
+              navController: NavController) {
 
     val filterData = topScreenViewModel.filterData.collectAsState()
 
     /**UI**/
     Column(
-        modifier = modifier
-            .fillMaxSize(),
+        modifier = modifier,
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
