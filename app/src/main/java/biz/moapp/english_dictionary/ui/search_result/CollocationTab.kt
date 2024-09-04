@@ -8,7 +8,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun Collocation(modifier: Modifier = Modifier, data: List<String>){
+fun CollocationTab(modifier: Modifier = Modifier, data: List<String>){
     Column( modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.Start) {
