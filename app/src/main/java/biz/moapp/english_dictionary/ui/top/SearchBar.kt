@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun SearchBar(modifier: Modifier = Modifier,
-              onValueChange: (String) -> Unit){
+              topScreenViewModel: TopScreenViewModel){
 
     var text by remember { mutableStateOf("") }
 
@@ -38,7 +38,7 @@ fun SearchBar(modifier: Modifier = Modifier,
             value = text,
             onValueChange = { inputText ->
                 text = inputText
-                onValueChange(inputText)
+                topScreenViewModel.searchLanguage(inputText)
             },
             maxLines = 1,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
