@@ -8,22 +8,24 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import biz.moapp.english_dictionary.navigation.Nav
 
 @Composable
-fun TopScreen(modifier: Modifier = Modifier, topScreenViewModel: TopScreenViewModel) {
+fun TopScreen(modifier: Modifier = Modifier,
+              topScreenViewModel: TopScreenViewModel,
+              navController: NavController) {
 
     val filterData = topScreenViewModel.filterData.collectAsState()
 
     /**UI**/
     Column(
-        modifier = modifier
-            .fillMaxSize(),
+        modifier = modifier,
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -38,8 +40,9 @@ fun TopScreen(modifier: Modifier = Modifier, topScreenViewModel: TopScreenViewMo
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             items(filterData.value) { data ->
-                Text(text = data.englishMean)
-                Spacer(modifier = Modifier.height(8.dp))
+                ListItem(data){
+                    navController.navigate("${Nav.SearchResultScreen.name}/${data.englishMean}")
+                }
             }
         }
     }
