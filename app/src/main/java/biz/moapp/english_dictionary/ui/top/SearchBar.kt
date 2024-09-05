@@ -26,11 +26,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import biz.moapp.english_dictionary.R
 
 @Composable
 fun SearchBar(modifier: Modifier = Modifier,
@@ -65,7 +67,7 @@ fun SearchBar(modifier: Modifier = Modifier,
                     if (text.isEmpty()) {
                         Icon(imageVector = Icons.Filled.Search, contentDescription = "")
                         Text(
-                            "検索したい単語を入力",
+                            stringResource(R.string.search_bar_placeholders),
                             color = Color.Gray,
                             fontSize = 16.sp
                         )

@@ -12,8 +12,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import biz.moapp.english_dictionary.R
 import biz.moapp.english_dictionary.navigation.Nav
 
 @Composable
@@ -37,7 +39,7 @@ fun TopScreen(modifier: Modifier = Modifier,
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
-                Text(text = "該当する単語がありません")
+                Text(text = stringResource(R.string.search_result_nothing))
             }
         }else {
             /**単語表示**/
