@@ -15,6 +15,8 @@ import retrofit2.http.Body
 import retrofit2.http.Headers
 import retrofit2.http.POST
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
+import javax.inject.Singleton
 
 interface RetrofitOpenAiApi {
     @Headers("Authorization: Bearer $OPENAI_API_KEY")
@@ -22,7 +24,8 @@ interface RetrofitOpenAiApi {
     suspend fun completion(@Body request : ChatCompletions.Request) : ChatCompletions.Response.Success
 }
 
-class RetrofitOpenAiNetwork :OpenAiDataSource{
+@Singleton
+class RetrofitOpenAiNetwork @Inject constructor(moshi: Moshi):OpenAiDataSource{
 
     /**HTTP通信ライブラリ(OkHttp)を使って、HTTPリクエストとレスポンスの内容をログに出力するための設定**/
     val client = OkHttpClient.Builder().readTimeout(30, TimeUnit.SECONDS).apply {
@@ -37,11 +40,7 @@ class RetrofitOpenAiNetwork :OpenAiDataSource{
     private val network = Retrofit.Builder()
         .baseUrl(OPEN_AI_API_BASE_URL)
         .client(client)
-        .addConverterFactory(MoshiConverterFactory.create(
-            Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
-        ))
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
         .build()
         .create(RetrofitOpenAiApi::class.java)
 
