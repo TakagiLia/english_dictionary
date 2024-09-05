@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -32,7 +33,7 @@ fun MeanTab(modifier: Modifier = Modifier, keyWord: String,data: List<String>){
             /**ToDo音声アイコン入れる予定**/
         }
         /**意味**/
-        Text(modifier = Modifier.padding(4.dp).background(color = Color.Cyan),
+        Text(modifier = Modifier.padding(4.dp),
             text = "意味",
             fontWeight = FontWeight.Bold,
             fontSize = 16.sp)
