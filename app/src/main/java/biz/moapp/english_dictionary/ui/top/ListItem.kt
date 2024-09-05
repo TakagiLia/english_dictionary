@@ -32,15 +32,15 @@ fun ListItem(data : Language, onClick: () -> Unit){
     ){
         Spacer(modifier = Modifier.width(8.dp))
         Column {
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(16.dp))
             Text(text = "${data.num}.")
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(16.dp))
         }
         Spacer(modifier = Modifier.width(8.dp))
         Column {
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(16.dp))
             Text(text = data.englishMean)
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(16.dp))
         }
     }
     HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
