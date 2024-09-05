@@ -1,4 +1,5 @@
 plugins {
+    kotlin("kapt")
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
 }
@@ -68,4 +69,15 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     /**NavigationCompose**/
     implementation (libs.androidx.navigation.compose)
+    /**Retrofit2**/
+    implementation(libs.retrofit)
+    implementation(libs.converter.moshi)
+
+    /**OK Http**/
+    implementation (libs.logging.interceptor)
+
+    /**Moshi**/
+    implementation(libs.moshi)
+    implementation(libs.moshi.kotlin)
+    kapt(libs.moshi.kotlin.codegen)
 }
