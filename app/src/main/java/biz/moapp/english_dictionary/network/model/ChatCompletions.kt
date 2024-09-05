@@ -1,8 +1,8 @@
-package biz.moapp.english_dictionary.model
+package biz.moapp.english_dictionary.network.model
 
-import biz.moapp.english_dictionary.model.child.ChatChoice
-import biz.moapp.english_dictionary.model.child.ChatMessage
-import biz.moapp.english_dictionary.model.child.Usage
+import biz.moapp.english_dictionary.network.model.child.ChatChoice
+import biz.moapp.english_dictionary.network.model.child.ChatMessage
+import biz.moapp.english_dictionary.network.model.child.Usage
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 

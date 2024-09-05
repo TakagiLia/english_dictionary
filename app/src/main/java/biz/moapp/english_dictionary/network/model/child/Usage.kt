@@ -1,4 +1,4 @@
-package biz.moapp.english_dictionary.model.child
+package biz.moapp.english_dictionary.network.model.child
 
 import com.squareup.moshi.JsonClass
 

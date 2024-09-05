@@ -3,8 +3,8 @@ package biz.moapp.english_dictionary.network
 import android.util.Log
 import biz.moapp.english_dictionary.OPENAI_API_KEY
 import biz.moapp.english_dictionary.OPEN_AI_API_BASE_URL
-import biz.moapp.english_dictionary.model.ChatCompletions
-import biz.moapp.english_dictionary.model.child.ChatMessage
+import biz.moapp.english_dictionary.network.model.ChatCompletions
+import biz.moapp.english_dictionary.network.model.child.ChatMessage
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
