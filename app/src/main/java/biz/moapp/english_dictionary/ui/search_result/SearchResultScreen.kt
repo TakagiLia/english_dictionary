@@ -7,8 +7,10 @@ import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -22,12 +24,22 @@ import biz.moapp.english_dictionary.R
 
 @SuppressLint("ResourceType")
 @Composable
-fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyWord"){
+fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyWord", searchResultViewModel: SearchResultViewModel){
     Column(modifier = modifier.fillMaxSize()) {
         /**タブ名前取得**/
         val tabLabels = stringArrayResource(R.array.tab_labels)
         /**タブインデックスの保持**/
         var selectedTabIndex by remember { mutableIntStateOf(0) }
+
+        var initialized by remember { mutableStateOf(false) }
+
+        /**初期表示のための処理**/
+        LaunchedEffect(Unit) {
+            if (!initialized) {
+                searchResultViewModel.getEnglishMean(keyWord ?: "No KeyWord")
+                initialized = true
+            }
+        }
 
         /**タブ**/
         TabRow(
