@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import java.io.IOException
+import java.text.Normalizer
 
 class TopScreenViewModel : ViewModel() {
 
@@ -29,16 +30,20 @@ class TopScreenViewModel : ViewModel() {
                             }
                             emptyList()
                         }
-        _filterData.value = _csvData.value
+//        _filterData.value = _csvData.value
     }
 
     /**検索欄から文字を検索**/
     fun searchLanguage(word : String){
-        _filterData.value = if (word.isBlank()) {
-            _csvData.value
+        /**全角半角を正規化　半角に調整**/
+        val normalizedWord =Normalizer.normalize(word, Normalizer.Form.NFKC)
+
+        /**該当する単語を抽出**/
+        _filterData.value = if (normalizedWord.isBlank()) {
+           emptyList()
         } else {
             _csvData.value.filter { value ->
-                value.englishMean.startsWith(word)
+                value.englishMean.startsWith(normalizedWord)
             }
         }
     }

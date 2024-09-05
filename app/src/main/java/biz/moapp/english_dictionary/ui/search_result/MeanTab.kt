@@ -1,6 +1,5 @@
 package biz.moapp.english_dictionary.ui.search_result
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -13,7 +12,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -32,7 +30,7 @@ fun MeanTab(modifier: Modifier = Modifier, keyWord: String,data: List<String>){
             /**ToDo音声アイコン入れる予定**/
         }
         /**意味**/
-        Text(modifier = Modifier.padding(4.dp).background(color = Color.Cyan),
+        Text(modifier = Modifier.padding(4.dp),
             text = "意味",
             fontWeight = FontWeight.Bold,
             fontSize = 16.sp)

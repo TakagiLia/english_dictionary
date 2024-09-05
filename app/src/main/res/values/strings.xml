@@ -7,4 +7,9 @@
         <item>類語</item>
         <item>共起表現</item>
     </array>
+    
+    <!--Top画面で表示-->
+    <string name="search_bar_placeholders">検索したい単語を英字入力</string>
+    <string name="search_result_nothing">該当する単語がありません</string>
+    
 </resources>
