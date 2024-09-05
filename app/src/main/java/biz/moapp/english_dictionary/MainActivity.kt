@@ -12,7 +12,9 @@ import androidx.compose.ui.Modifier
 import biz.moapp.english_dictionary.ui.base.BaseScreen
 import biz.moapp.english_dictionary.ui.theme.English_dictionaryTheme
 import biz.moapp.english_dictionary.ui.top.TopScreenViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
