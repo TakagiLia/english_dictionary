@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">english_dictionary</string>
+    <string name="app_name">英単語辞典</string>
+    <!--タブで利用-->
+    <array name="tab_labels">
+        <item>意味</item>
+        <item>例文</item>
+        <item>類語</item>
+        <item>共起表現</item>
+    </array>
+    
+    <!--Top画面で表示-->
+    <string name="search_bar_placeholders">検索したい単語を英字入力</string>
+    <string name="search_result_nothing">該当する単語がありません</string>
+
+    <!--単語検索結果画面で表示-->
+    <string name="search_result_error">単語の意味の取得に失敗しました。</string>
+    
 </resources>
