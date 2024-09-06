@@ -21,6 +21,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import biz.moapp.english_dictionary.JsonUtil.convertStringToList
 import biz.moapp.english_dictionary.R
+import biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content.CollocationTab
+import biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content.ExampleTab
+import biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content.MeanTab
+import biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content.SynonymsTab
 
 @Composable
 fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyWord", searchResultViewModel: SearchResultViewModel){

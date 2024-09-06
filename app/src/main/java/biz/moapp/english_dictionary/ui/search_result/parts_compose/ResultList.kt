@@ -1,4 +1,4 @@
-package biz.moapp.english_dictionary.ui.search_result
+package biz.moapp.english_dictionary.ui.search_result.parts_compose
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
