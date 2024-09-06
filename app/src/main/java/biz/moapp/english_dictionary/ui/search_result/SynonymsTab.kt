@@ -16,10 +16,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import biz.moapp.english_dictionary.DataMock.EnglishSynonym
+import biz.moapp.english_dictionary.data.row.Synonym
 
 @Composable
-fun SynonymsTab(modifier: Modifier = Modifier, data: List<EnglishSynonym>){
+fun SynonymsTab(modifier: Modifier = Modifier, data: List<Synonym>){
     Column( modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.Start) {
@@ -32,8 +32,8 @@ fun SynonymsTab(modifier: Modifier = Modifier, data: List<EnglishSynonym>){
                items(data){
                    Spacer(modifier = Modifier.height(8.dp))
                    Row {
-                       Text(text = "英語：${it.eng}, ")
-                       Text(text = "日本語：${it.jp}")
+                       Text(text = "英語：${it.word}, ")
+                       Text(text = "日本語：${it.japaneseMeaning}")
                    }
                    Spacer(modifier = Modifier.height(8.dp))
                    HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
