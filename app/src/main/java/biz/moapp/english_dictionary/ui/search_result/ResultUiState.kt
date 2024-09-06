@@ -1,6 +1,6 @@
 package biz.moapp.english_dictionary.ui.search_result
 
-import biz.moapp.english_dictionary.data.row.WordInfo
+import biz.moapp.english_dictionary.data.json_row.WordInfo
 
 data class ResultUiState(
     val result: WordInfo? = null,

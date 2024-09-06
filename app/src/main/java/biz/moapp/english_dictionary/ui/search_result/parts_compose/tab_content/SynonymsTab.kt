@@ -16,7 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import biz.moapp.english_dictionary.data.row.Synonym
+import biz.moapp.english_dictionary.data.json_row.Synonym
 
 @Composable
 fun SynonymsTab(modifier: Modifier = Modifier, data: List<Synonym>){

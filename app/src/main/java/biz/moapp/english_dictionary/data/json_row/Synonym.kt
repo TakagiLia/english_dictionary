@@ -1,4 +1,4 @@
-package biz.moapp.english_dictionary.data.row
+package biz.moapp.english_dictionary.data.json_row
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
