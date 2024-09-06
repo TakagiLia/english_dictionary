@@ -19,7 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import biz.moapp.english_dictionary.JsonUtil.convertStringToList
+import biz.moapp.english_dictionary.utill.JsonUtil.convertStringToList
 import biz.moapp.english_dictionary.R
 import biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content.CollocationTab
 import biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content.ExampleTab

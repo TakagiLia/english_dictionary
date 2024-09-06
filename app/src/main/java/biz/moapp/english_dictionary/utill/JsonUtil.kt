@@ -1,4 +1,4 @@
-package biz.moapp.english_dictionary
+package biz.moapp.english_dictionary.utill
 
 import android.util.Log
 import biz.moapp.english_dictionary.data.json_row.WordInfo

@@ -3,7 +3,7 @@ package biz.moapp.english_dictionary.ui.top
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import biz.moapp.english_dictionary.FileUtil.readCsvDataFromAssets
+import biz.moapp.english_dictionary.utill.FileUtil.readCsvDataFromAssets
 import biz.moapp.english_dictionary.data.Language
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

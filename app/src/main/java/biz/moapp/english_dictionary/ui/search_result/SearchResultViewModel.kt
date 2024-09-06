@@ -6,7 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import biz.moapp.english_dictionary.JsonUtil.convertJsonToWordInfo
+import biz.moapp.english_dictionary.utill.JsonUtil.convertJsonToWordInfo
 import biz.moapp.english_dictionary.network.RetrofitOpenAiNetwork
 import biz.moapp.english_dictionary.network.model.ChatCompletions
 import dagger.hilt.android.lifecycle.HiltViewModel
