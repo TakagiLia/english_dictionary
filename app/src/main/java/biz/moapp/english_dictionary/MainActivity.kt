@@ -10,9 +10,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import biz.moapp.english_dictionary.ui.base.BaseScreen
+import biz.moapp.english_dictionary.ui.search_result.SearchResultViewModel
 import biz.moapp.english_dictionary.ui.theme.English_dictionaryTheme
 import biz.moapp.english_dictionary.ui.top.TopScreenViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +24,8 @@ class MainActivity : ComponentActivity() {
         val topScreenViewModel: TopScreenViewModel by viewModels()
         topScreenViewModel.readCsvDataFromAsset(this)
 
+        val searchResultViewModel: SearchResultViewModel by viewModels()
+
         enableEdgeToEdge()
         setContent {
             English_dictionaryTheme {
@@ -28,7 +33,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    BaseScreen(topScreenViewModel)
+                    BaseScreen(topScreenViewModel, searchResultViewModel)
                 }
             }
         }

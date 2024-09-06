@@ -11,5 +11,8 @@
     <!--Top画面で表示-->
     <string name="search_bar_placeholders">検索したい単語を英字入力</string>
     <string name="search_result_nothing">該当する単語がありません</string>
+
+    <!--単語検索結果画面で表示-->
+    <string name="search_result_error">単語の意味の取得に失敗しました。</string>
     
 </resources>

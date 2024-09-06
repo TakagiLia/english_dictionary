@@ -45,4 +45,6 @@ object DataMock {
         "apple polisher (ご機嫌取り)",
         "rotten apple (グループの中のたちの悪い者)"
     )
+
+    val jsonMock = "{\"japanese_mean\": \"悪い\",\"example\": [\"The food was so bad that I couldn't finish it.\",\"He had a bad feeling about the situation.\",\"She made a bad decision without thinking it through.\",\"It's a bad habit to procrastinate.\",\"That was a bad joke; no one laughed.\",\"I felt bad after forgetting her birthday.\",\"The weather is really bad today; it's raining heavily.\",\"He always has a bad attitude towards authority.\",\"It's bad luck when a black cat crosses your path.\",\"She has a bad reputation in the industry.\"],\"synonym\": [{\"word\": \"awful\",\"mean\": \"ひどい\"},{\"word\": \"terrible\",\"mean\": \"恐ろしい\"},{\"word\": \"poor\",\"mean\": \"貧弱な\"},{\"word\": \"horrible\",\"mean\": \"恐ろしい\"},{\"word\": \"dreadful\",\"mean\": \"恐ろしい\"},{\"word\": \"atrocious\",\"mean\": \"ひどい\"},{\"word\": \"unsatisfactory\",\"mean\": \"不満足な\"},{\"word\": \"subpar\",\"mean\": \"標準以下の\"},{\"word\": \"inferior\",\"mean\": \"劣っている\"},{\"word\": \"lousy\",\"mean\": \"劣悪な\"}],\"co_occurrences\": [\"bad news\",\"bad behavior\",\"bad mood\",\"bad attitude\",\"bad influence\",\"bad experience\",\"bad condition\",\"bad luck\",\"bad timing\",\"bad credit\"]}"
 }
