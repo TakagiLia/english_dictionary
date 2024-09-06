@@ -1,4 +1,4 @@
-package biz.moapp.english_dictionary.ui.top
+package biz.moapp.english_dictionary.ui.top.parts_compose
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
