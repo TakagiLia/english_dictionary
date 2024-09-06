@@ -1,7 +1,7 @@
-package biz.moapp.english_dictionary
+package biz.moapp.english_dictionary.utill
 
 import android.util.Log
-import biz.moapp.english_dictionary.data.row.WordInfo
+import biz.moapp.english_dictionary.data.json_row.WordInfo
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 

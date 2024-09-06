@@ -1,4 +1,4 @@
-package biz.moapp.english_dictionary
+package biz.moapp.english_dictionary.utill
 
 /**DataMock**/
 object DataMock {

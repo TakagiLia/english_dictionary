@@ -1,4 +1,4 @@
-package biz.moapp.english_dictionary.ui.search_result
+package biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

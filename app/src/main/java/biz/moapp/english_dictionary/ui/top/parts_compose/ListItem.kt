@@ -1,4 +1,4 @@
-package biz.moapp.english_dictionary.ui.top
+package biz.moapp.english_dictionary.ui.top.parts_compose
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -14,7 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import biz.moapp.english_dictionary.Language
+import biz.moapp.english_dictionary.data.Language
 
 @Composable
 fun ListItem(data : Language, onClick: () -> Unit){

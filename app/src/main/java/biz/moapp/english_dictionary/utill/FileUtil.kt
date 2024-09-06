@@ -1,6 +1,7 @@
-package biz.moapp.english_dictionary
+package biz.moapp.english_dictionary.utill
 
 import android.content.Context
+import biz.moapp.english_dictionary.data.Language
 
 object FileUtil {
 
