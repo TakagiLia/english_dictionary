@@ -1,5 +1,6 @@
 package biz.moapp.english_dictionary.ui.search_result
 
+import android.speech.tts.TextToSpeech
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,7 +28,7 @@ import biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content.M
 import biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content.SynonymsTab
 
 @Composable
-fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyWord", searchResultViewModel: SearchResultViewModel){
+fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyWord", searchResultViewModel: SearchResultViewModel, textToSpeech: TextToSpeech?){
     Column(modifier = modifier.fillMaxSize()) {
         /**タブ名前取得**/
         val tabLabels = stringArrayResource(R.array.tab_labels)
@@ -78,7 +79,7 @@ fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyW
                 (searchResultViewModel.resultUiState.sendResultState  as ResultUiState.SendResultState.Success).results?.let { data ->
                     /**インデックスによってタブ内容が切り替わる**/
                     when(selectedTabIndex){
-                        0 -> { MeanTab(modifier,keyWord ?: "No keyWord", convertStringToList(data.japaneseMeaning)) }
+                        0 -> { MeanTab(modifier,keyWord ?: "No keyWord", convertStringToList(data.japaneseMeaning),textToSpeech,) }
                         1 -> { ExampleTab(modifier,data.exampleSentences) }
                         2 -> { SynonymsTab(modifier,data.synonyms) }
                         3 -> { CollocationTab(modifier,data.coOccurrences) }
