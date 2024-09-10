@@ -46,4 +46,9 @@ class TopScreenViewModel : ViewModel() {
             }
         }
     }
+
+    /**特定の値を初期化**/
+    fun initializeValues() {
+        _filterData.value = emptyList()
+    }
 }
