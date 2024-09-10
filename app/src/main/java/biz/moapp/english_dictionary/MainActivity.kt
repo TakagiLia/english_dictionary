@@ -18,12 +18,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
 
 @AndroidEntryPoint
-class MainActivity : ComponentActivity(),  TextToSpeech.OnInitListener {
-    private var textToSpeech: TextToSpeech? = null
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        textToSpeech = TextToSpeech(this, this)
 
         /**AssetからCSV読み込み**/
         val topScreenViewModel: TopScreenViewModel by viewModels()
@@ -38,13 +35,9 @@ class MainActivity : ComponentActivity(),  TextToSpeech.OnInitListener {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    BaseScreen(topScreenViewModel, searchResultViewModel, textToSpeech)
+                    BaseScreen(topScreenViewModel, searchResultViewModel,)
                 }
             }
         }
-    }
-
-    override fun onInit(status: Int) {
-        textToSpeech?.language = Locale.ENGLISH
     }
 }

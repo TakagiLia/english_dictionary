@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun ResultList(data: List<String>){
+
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         contentPadding = PaddingValues(4.dp),
@@ -20,7 +21,10 @@ fun ResultList(data: List<String>){
     ) {
         items(data) { value ->
             Spacer(modifier = Modifier.height(8.dp))
-            Text(text = "・${value}")
+            Row {
+                SoundIcon(value)
+                Text(text = value)
+            }
             Spacer(modifier = Modifier.height(8.dp))
             HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
             Spacer(modifier = Modifier.height(1.dp))
