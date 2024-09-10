@@ -22,7 +22,7 @@ import biz.moapp.english_dictionary.ui.top.TopScreen
 import biz.moapp.english_dictionary.ui.top.TopScreenViewModel
 
 @Composable
-fun BaseScreen(topScreenViewModel: TopScreenViewModel, searchResultViewModel: SearchResultViewModel,  textToSpeech: TextToSpeech?) {
+fun BaseScreen(topScreenViewModel: TopScreenViewModel, searchResultViewModel: SearchResultViewModel,) {
     val navController = rememberNavController()
     Scaffold(modifier = Modifier.fillMaxSize(), topBar = { TopBar() }, bottomBar = { BottomBar()}){  innerPadding ->
         NavHost(
@@ -49,7 +49,7 @@ fun BaseScreen(topScreenViewModel: TopScreenViewModel, searchResultViewModel: Se
                 arguments = listOf(navArgument("keyWord") { type = NavType.StringType })
             ) {backStackEntry ->
                 val keyWord = backStackEntry.arguments?.getString("keyWord")
-                SearchResultScreen(Modifier.padding(innerPadding),keyWord, searchResultViewModel,textToSpeech)
+                SearchResultScreen(Modifier.padding(innerPadding),keyWord, searchResultViewModel,)
             }
         }
     }

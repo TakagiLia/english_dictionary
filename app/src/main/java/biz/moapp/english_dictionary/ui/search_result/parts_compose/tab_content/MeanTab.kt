@@ -1,6 +1,5 @@
 package biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content
 
-import android.speech.tts.TextToSpeech
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -19,7 +18,7 @@ import androidx.compose.ui.unit.sp
 import biz.moapp.english_dictionary.ui.search_result.parts_compose.SoundIcon
 
 @Composable
-fun MeanTab(modifier: Modifier = Modifier, keyWord: String, data: List<String>, textToSpeech: TextToSpeech?,){
+fun MeanTab(modifier: Modifier = Modifier, keyWord: String, data: List<String>,){
     Column( modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.Start){
