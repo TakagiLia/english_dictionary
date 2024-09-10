@@ -1,6 +1,5 @@
 package biz.moapp.english_dictionary.ui.base
 
-import android.speech.tts.TextToSpeech
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,7 +23,7 @@ import biz.moapp.english_dictionary.ui.top.TopScreenViewModel
 @Composable
 fun BaseScreen(topScreenViewModel: TopScreenViewModel, searchResultViewModel: SearchResultViewModel,) {
     val navController = rememberNavController()
-    Scaffold(modifier = Modifier.fillMaxSize(), topBar = { TopBar() }, bottomBar = { BottomBar()}){  innerPadding ->
+    Scaffold(modifier = Modifier.fillMaxSize(), topBar = { TopBar(navController) }, bottomBar = { BottomBar()}){  innerPadding ->
         NavHost(
             navController = navController, startDestination = Nav.TopScreen.name,
             enterTransition = {
