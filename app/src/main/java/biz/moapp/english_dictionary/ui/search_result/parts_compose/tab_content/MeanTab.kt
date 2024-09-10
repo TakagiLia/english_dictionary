@@ -21,9 +21,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import biz.moapp.english_dictionary.R
+import biz.moapp.english_dictionary.ui.search_result.rememberTextToSpeech
 
 @Composable
 fun MeanTab(modifier: Modifier = Modifier, keyWord: String, data: List<String>, textToSpeech: TextToSpeech?,){
+    val tts = rememberTextToSpeech()
     Column( modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.Start){
@@ -34,7 +36,7 @@ fun MeanTab(modifier: Modifier = Modifier, keyWord: String, data: List<String>, 
                 fontWeight = FontWeight.Bold,
                 fontSize = 40.sp)
             IconButton(onClick = {
-                textToSpeech?.speak(keyWord, TextToSpeech.QUEUE_ADD,null, null)
+                tts.value?.speak(keyWord, TextToSpeech.QUEUE_ADD,null, null)
             },
                         modifier = Modifier.padding(4.dp),) {
                 Icon(painter = painterResource(R.drawable.volume_up_24px),
