@@ -27,8 +27,8 @@ fun MeanTab(modifier: Modifier = Modifier, keyWord: String, data: List<String>,)
             Text(modifier = Modifier.padding(4.dp),
                 text = keyWord,
                 fontWeight = FontWeight.Bold,
-                fontSize = 40.sp)
-            SoundIcon(keyWord)
+                fontSize = 36.sp)
+            SoundIcon(word = keyWord, modifier = Modifier.padding(top = 8.dp))
         }
         /**意味**/
         Text(modifier = Modifier.padding(4.dp),
