@@ -97,4 +97,7 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
+
+    /**マテリアルデザインのアイコン追加パッケージ**/
+    implementation (libs.androidx.material.icons.extended)
 }
