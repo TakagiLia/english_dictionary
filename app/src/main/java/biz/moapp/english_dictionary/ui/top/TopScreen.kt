@@ -1,6 +1,7 @@
 package biz.moapp.english_dictionary.ui.top
 
 import android.util.Log
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,6 +31,13 @@ fun TopScreen(modifier: Modifier = Modifier,
 
     val filterData = topScreenViewModel.filterData.collectAsState()
     val backStackEntry by navController.currentBackStackEntryAsState()
+
+    /**端末戻るボタンの制御**/
+    BackHandler(
+        enabled = true
+    ) {
+        //ここに実行したい処理を記載(何もなけれ動作なしになる)
+    }
 
     /**UI**/
     Column(
