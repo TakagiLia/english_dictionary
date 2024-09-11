@@ -1,6 +1,6 @@
 package biz.moapp.english_dictionary.ui.search_result
 
-import android.speech.tts.TextToSpeech
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -36,6 +36,13 @@ fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyW
         var selectedTabIndex by remember { mutableIntStateOf(0) }
 
         var initialized by remember { mutableStateOf(false) }
+
+        /**端末戻るボタンの制御**/
+        BackHandler(
+            enabled = true
+        ) {
+            //ここに実行したい処理を記載(何もなけれ動作なしになる)
+        }
 
         /**初期表示のための処理**/
         LaunchedEffect(Unit) {
