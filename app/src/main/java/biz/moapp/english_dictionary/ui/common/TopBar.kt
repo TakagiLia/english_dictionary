@@ -1,5 +1,6 @@
 package biz.moapp.english_dictionary.ui.common
 
+import android.util.Log
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBackIosNew
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -30,7 +31,14 @@ fun TopBar(navController :NavController){
         },
         navigationIcon = {
             if(selectedRoute != Nav.TopScreen.name){
-                IconButton(onClick = { navController.navigate(Nav.TopScreen.name) }) {
+                IconButton(onClick = {
+                    navController.navigate(Nav.TopScreen.name) {
+                        Log.d("--TopBar", "${backStackEntry?.destination?.route}")
+                        backStackEntry?.destination?.route?.let {
+                            popUpTo(it) { inclusive = true }
+                        }
+                    }
+                }) {
                     Icon(imageVector = Icons.Default.ArrowBackIosNew, contentDescription = "")
                 }
             }
