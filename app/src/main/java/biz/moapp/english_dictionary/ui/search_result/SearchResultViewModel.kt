@@ -69,6 +69,8 @@ class SearchResultViewModel
                                         _jsonData.value = it
                                     }
                                 }
+                                Log.d("--wordInfo Json", "${result.choices[0].message?.content}")
+
                                 /**受け取ったレスポンスをJsonに整形してWordInfoに変換**/
                                 val wordInfo =
                                     convertJsonToWordInfo(result.choices[0].message?.content ?: "")
