@@ -12,6 +12,7 @@ object JsonUtil {
                 .replace("\n", "")
                 .replace("  ", "")
                 .replace("```json", "")
+                .replace("```", "")
                 .trimIndent()
 
             Log.d("--convertJsonToWordInfo json", "${json}")
