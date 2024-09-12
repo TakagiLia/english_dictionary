@@ -33,7 +33,7 @@ fun SearchBar(modifier: Modifier = Modifier,
               topScreenViewModel: TopScreenViewModel
 ){
 
-    var text by remember { mutableStateOf("") }
+    var text by remember { mutableStateOf(topScreenViewModel.searchWord.value) }
 
     Row(modifier = Modifier
         .padding(horizontal = 8.dp),
@@ -43,8 +43,11 @@ fun SearchBar(modifier: Modifier = Modifier,
             modifier = Modifier.fillMaxWidth(),
             value = text,
             onValueChange = { inputText ->
-                text = inputText
-                topScreenViewModel.searchLanguage(inputText)
+                topScreenViewModel.apply {
+                    setSearchWord(inputText)
+                    text = searchWord.value
+                    searchLanguage(inputText)
+                }
             },
             maxLines = 1,
             singleLine = true,
