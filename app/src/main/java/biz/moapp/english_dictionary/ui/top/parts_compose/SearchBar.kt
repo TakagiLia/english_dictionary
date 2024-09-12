@@ -15,6 +15,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -41,42 +42,65 @@ fun SearchBar(modifier: Modifier = Modifier,
 
     var text by remember { mutableStateOf("") }
 
-    Row(modifier = Modifier.padding(horizontal = 8.dp)
-        .clip(RoundedCornerShape(8.dp))
-        .background(color = MaterialTheme.colorScheme.surfaceDim)
-        .border(1.dp,  MaterialTheme.colorScheme.outline, RoundedCornerShape(8.dp)),
+    Row(modifier = Modifier.padding(horizontal = 8.dp),
         horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.Top) {
-        BasicTextField(
+        verticalAlignment = Alignment.Top){
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
             value = text,
             onValueChange = { inputText ->
                 text = inputText
                 topScreenViewModel.searchLanguage(inputText)
             },
             maxLines = 1,
+            singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
             visualTransformation = VisualTransformation.None,
-            modifier = Modifier
-                .padding(6.dp)
-                .fillMaxWidth(),
-            decorationBox = { innerTextField ->
-                /**プレースホルダー**/
-                Row(
-                    Modifier
-                        .padding(8.dp)
-                        .horizontalScroll(rememberScrollState())) {
-                    if (text.isEmpty()) {
-                        Icon(imageVector = Icons.Filled.Search, contentDescription = "")
-                        Text(
-                            stringResource(R.string.search_bar_placeholders),
-                            color = Color.Gray,
-                            fontSize = 16.sp
-                        )
-                    }
-                    innerTextField()
+            placeholder = {
+                Row{
+                    Icon(imageVector = Icons.Filled.Search, contentDescription = "")
+                    Text(stringResource(R.string.search_bar_placeholders),)
                 }
             },
-            textStyle = TextStyle(fontSize = 18.sp),
         )
     }
+
+//    Row(modifier = Modifier.padding(horizontal = 8.dp)
+//        .clip(RoundedCornerShape(8.dp))
+//        .background(color = MaterialTheme.colorScheme.surfaceDim)
+//        .border(1.dp,  MaterialTheme.colorScheme.outline, RoundedCornerShape(8.dp)),
+//        horizontalArrangement = Arrangement.Center,
+//        verticalAlignment = Alignment.Top) {
+//        BasicTextField(
+//            value = text,
+//            onValueChange = { inputText ->
+//                text = inputText
+//                topScreenViewModel.searchLanguage(inputText)
+//            },
+//            maxLines = 1,
+//            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+//            visualTransformation = VisualTransformation.None,
+//            modifier = Modifier
+//                .padding(6.dp)
+//                .fillMaxWidth(),
+//            decorationBox = { innerTextField ->
+//                /**プレースホルダー**/
+//                Row(
+//                    Modifier
+//                        .padding(8.dp)
+//                        .horizontalScroll(rememberScrollState())) {
+//                    if (text.isEmpty()) {
+//                        Icon(imageVector = Icons.Filled.Search, contentDescription = "")
+//                        Text(
+//                            stringResource(R.string.search_bar_placeholders),
+//                            color = Color.Gray,
+//                            fontSize = 16.sp
+//                        )
+//                    }
+//                    innerTextField()
+//                }
+//            },
+//            textStyle = TextStyle(fontSize = 18.sp, color = Color.White),
+//        )
+//    }
 }
