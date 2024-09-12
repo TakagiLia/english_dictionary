@@ -23,7 +23,7 @@ import biz.moapp.english_dictionary.ui.top.TopScreenViewModel
 @Composable
 fun BaseScreen(topScreenViewModel: TopScreenViewModel, searchResultViewModel: SearchResultViewModel,) {
     val navController = rememberNavController()
-    Scaffold(modifier = Modifier.fillMaxSize(), topBar = { TopBar(navController) }, bottomBar = { BottomBar()}){  innerPadding ->
+    Scaffold(modifier = Modifier.fillMaxSize(), topBar = { TopBar(navController) }, /*bottomBar = { BottomBar()}*/){  innerPadding ->
         NavHost(
             navController = navController, startDestination = Nav.TopScreen.name,
             enterTransition = {
