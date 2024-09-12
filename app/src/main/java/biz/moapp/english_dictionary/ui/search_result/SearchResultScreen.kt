@@ -86,7 +86,7 @@ fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyW
                 (searchResultViewModel.resultUiState.sendResultState  as ResultUiState.SendResultState.Success).results?.let { data ->
                     /**インデックスによってタブ内容が切り替わる**/
                     when(selectedTabIndex){
-                        0 -> { MeanTab(modifier,keyWord ?: "No keyWord", convertStringToList(data.japaneseMeaning),) }
+                        0 -> { MeanTab(modifier,keyWord ?: "No keyWord", data.japaneseMeaning,) }
                         1 -> { ExampleTab(modifier,data.exampleSentences) }
                         2 -> { SynonymsTab(modifier,data.synonyms) }
                         3 -> { CollocationTab(modifier,data.coOccurrences) }

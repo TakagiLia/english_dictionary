@@ -60,7 +60,7 @@ class RetrofitOpenAiNetwork @Inject constructor(moshi: Moshi):OpenAiDataSource{
                 role = "user",
                 content = "Please provide the following information for the English word \"$word\" in JSON format without line breaks.\n" +
                         "\n" +
-                        "- Meaning in Japanese (key name: japanese_mean)\n" +
+                        "- Easy-to-understand Japanese meaning (key name: japanese_mean, list type of string)\n" +
                         "\n" +
                         "- Example sentences in English (10, key name: example)\n" +
                         "\n" +
