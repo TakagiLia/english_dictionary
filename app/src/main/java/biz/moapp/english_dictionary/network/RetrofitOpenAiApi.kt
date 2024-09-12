@@ -6,7 +6,6 @@ import biz.moapp.english_dictionary.OPEN_AI_API_BASE_URL
 import biz.moapp.english_dictionary.network.model.ChatCompletions
 import biz.moapp.english_dictionary.network.model.child.ChatMessage
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -59,9 +58,9 @@ class RetrofitOpenAiNetwork @Inject constructor(moshi: Moshi):OpenAiDataSource{
         messages = listOf(
             ChatMessage(
                 role = "user",
-                content = "Please provide the following information for the English word $word in JSON format without line breaks.\n" +
+                content = "Please provide the following information for the English word \"$word\" in JSON format without line breaks.\n" +
                         "\n" +
-                        "- Meaning in Japanese (key name: japanese_mean)\n" +
+                        "- Easy-to-understand Japanese meaning (key name: japanese_mean, list type of string)\n" +
                         "\n" +
                         "- Example sentences in English (10, key name: example)\n" +
                         "\n" +
