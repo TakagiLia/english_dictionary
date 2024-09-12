@@ -46,7 +46,7 @@ class TopScreenViewModel : ViewModel() {
 
         /**該当する単語を抽出**/
         _filterData.value = if (normalizedWord.isBlank()) {
-           emptyList()
+            _csvData.value
         } else {
             _csvData.value.filter { value ->
                 value.englishMean.startsWith(normalizedWord)
