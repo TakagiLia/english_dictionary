@@ -62,7 +62,13 @@ fun SearchBar(modifier: Modifier = Modifier,
             trailingIcon = {
                 if(text.isNotEmpty()){
                     Icon(imageVector = Icons.Filled.Cancel,
-                        modifier = Modifier.clickable(onClick = { text = "" },
+                        modifier = Modifier
+                            .clickable(onClick = {
+                                topScreenViewModel.apply {
+                                    setSearchWord("")
+                                    text = searchWord.value
+                                    initializeValues()
+                                } },
                             indication = null, //indication = nullでリップル削除
                             interactionSource = remember { MutableInteractionSource() },),
                         contentDescription = "")
