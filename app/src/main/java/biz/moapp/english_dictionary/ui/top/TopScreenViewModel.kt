@@ -19,6 +19,12 @@ class TopScreenViewModel : ViewModel() {
     private val _filterData = MutableStateFlow<List<Language>>(emptyList())
     val filterData: StateFlow<List<Language>> = _filterData.asStateFlow()
 
+    private val _searchWord = MutableStateFlow<String>("")
+    val searchWord: StateFlow<String> = _searchWord.asStateFlow()
+    fun setSearchWord(word: String){
+        _searchWord.value = word
+    }
+
     /**AssetからCSV読み込み csvDataで保持**/
     fun readCsvDataFromAsset(context : Context){
         _csvData.value = runCatching { readCsvDataFromAssets(context) }
