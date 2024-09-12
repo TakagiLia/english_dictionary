@@ -67,7 +67,7 @@ fun SearchBar(modifier: Modifier = Modifier,
                                 topScreenViewModel.apply {
                                     setSearchWord("")
                                     text = searchWord.value
-                                    initializeValues()
+                                    initializeFilterList()
                                 } },
                             indication = null, //indication = nullでリップル削除
                             interactionSource = remember { MutableInteractionSource() },),

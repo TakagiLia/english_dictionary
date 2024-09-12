@@ -36,6 +36,7 @@ class TopScreenViewModel : ViewModel() {
                             }
                             emptyList()
                         }
+        initializeFilterList()
     }
 
     /**検索欄から文字を検索**/
@@ -51,6 +52,11 @@ class TopScreenViewModel : ViewModel() {
                 value.englishMean.startsWith(normalizedWord)
             }
         }
+    }
+
+    /**フィルターリストの初期化**/
+    fun initializeFilterList(){
+        _filterData.value = _csvData.value
     }
 
     /**特定の値を初期化**/
