@@ -47,7 +47,6 @@ fun BaseScreen(topScreenViewModel: TopScreenViewModel, searchResultViewModel: Se
             composable(route = "${Nav.SearchResultScreen.name}/{keyWord}",
                 arguments = listOf(navArgument("keyWord") { type = NavType.StringType })
             ) {backStackEntry ->
-                topScreenViewModel.initializeValues()
                 val keyWord = backStackEntry.arguments?.getString("keyWord")
                 SearchResultScreen(Modifier.padding(innerPadding),keyWord, searchResultViewModel,)
             }
