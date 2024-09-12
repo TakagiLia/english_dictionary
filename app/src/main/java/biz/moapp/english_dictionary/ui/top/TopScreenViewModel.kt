@@ -19,6 +19,12 @@ class TopScreenViewModel : ViewModel() {
     private val _filterData = MutableStateFlow<List<Language>>(emptyList())
     val filterData: StateFlow<List<Language>> = _filterData.asStateFlow()
 
+    private val _searchWord = MutableStateFlow<String>("")
+    val searchWord: StateFlow<String> = _searchWord.asStateFlow()
+    fun setSearchWord(word: String){
+        _searchWord.value = word
+    }
+
     /**AssetからCSV読み込み csvDataで保持**/
     fun readCsvDataFromAsset(context : Context){
         _csvData.value = runCatching { readCsvDataFromAssets(context) }
@@ -30,6 +36,7 @@ class TopScreenViewModel : ViewModel() {
                             }
                             emptyList()
                         }
+        initializeFilterList()
     }
 
     /**検索欄から文字を検索**/
@@ -39,12 +46,17 @@ class TopScreenViewModel : ViewModel() {
 
         /**該当する単語を抽出**/
         _filterData.value = if (normalizedWord.isBlank()) {
-           emptyList()
+            _csvData.value
         } else {
             _csvData.value.filter { value ->
                 value.englishMean.startsWith(normalizedWord)
             }
         }
+    }
+
+    /**フィルターリストの初期化**/
+    fun initializeFilterList(){
+        _filterData.value = _csvData.value
     }
 
     /**特定の値を初期化**/
