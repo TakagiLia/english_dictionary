@@ -5,7 +5,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
@@ -37,8 +36,7 @@ fun SearchBar(modifier: Modifier = Modifier,
     var text by remember { mutableStateOf("") }
 
     Row(modifier = Modifier
-        .padding(horizontal = 8.dp)
-        .fillMaxSize(),
+        .padding(horizontal = 8.dp),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.Top){
         OutlinedTextField(
