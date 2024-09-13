@@ -58,15 +58,12 @@ class RetrofitOpenAiNetwork @Inject constructor(moshi: Moshi):OpenAiDataSource{
         messages = listOf(
             ChatMessage(
                 role = "user",
-                content = "Please provide the following information for the English word \"$word\" in JSON format without line breaks.\n" +
-                        "\n" +
-                        "- Easy-to-understand Japanese meaning (key name: japanese_mean, list type of string)\n" +
-                        "\n" +
-                        "- Example sentences in English (10, key name: example)\n" +
-                        "\n" +
-                        "- Synonyms (key name: synonym) in English (key name: word) and their meaning in Japanese (key name: mean)\n" +
-                        "\n" +
-                        "- Co-occurrences in English (key name: co_occurrences)"
+                content = "Please enter the following information for the English word \"$word\" in JSON format without line breaks.\n" +
+                        "- Easy-to-understand Japanese meaning (key name: japanese_mean, list-type string)\n" +
+                        "- English example sentences (10, key name: example)\n" +
+                        "- English synonyms (key name: synonym) (key name: word) and their Japanese meanings (key name: mean)\n" +
+                        "- English antonyms (key name: antonyms) (key name: word) and their Japanese meanings (key name: mean)\n" +
+                        "- Easy-to-understand explanations of English word origins in Japanese (key name: word_roots)"
             ),
         ),
     )
