@@ -18,7 +18,11 @@ import biz.moapp.english_dictionary.ui.search_result.rememberTextToSpeech
 @Composable
 fun SoundIcon(word :String, modifier: Modifier = Modifier){
     val tts = rememberTextToSpeech()
-    Row(modifier = modifier.clickable(onClick = { tts.value?.speak(word, TextToSpeech.QUEUE_ADD,null, null) },
+    val onClick = remember(tts, word) {
+        { tts.value?.speak(word, TextToSpeech.QUEUE_ADD, null, null) }
+    }
+
+    Row(modifier = modifier.clickable(onClick = { onClick() },
         indication = null, //indication = nullでリップル削除
         interactionSource = remember { MutableInteractionSource() },)){
         Icon(painter = painterResource(R.drawable.volume_up_24px),

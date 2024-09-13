@@ -3,9 +3,10 @@
     <!--タブで利用-->
     <array name="tab_labels">
         <item>意味</item>
+        <item>類義語</item>
+        <item>反対語</item>
         <item>例文</item>
-        <item>類語</item>
-        <item>共起表現</item>
+        <item>語源</item>
     </array>
     
     <!--Top画面で表示-->

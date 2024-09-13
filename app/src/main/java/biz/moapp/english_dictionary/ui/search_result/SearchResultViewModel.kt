@@ -81,7 +81,8 @@ class SearchResultViewModel
                                 Log.d("--wordInfo japaneseMeaning", "${wordInfo?.japaneseMeaning}")
                                 Log.d("--wordInfo exampleSentences", "${wordInfo?.exampleSentences}")
                                 Log.d("--wordInfo synonyms", "${wordInfo?.synonyms}")
-                                Log.d("--wordInfo coOccurrences", "${wordInfo?.coOccurrences}")
+                                Log.d("--wordInfo antonyms", "${wordInfo?.antonyms}")
+                                Log.d("--wordInfo wordRoots", "${wordInfo?.wordRoots}")
 
                                 resultUiState.copy(
                                     result = wordInfo,

@@ -19,32 +19,28 @@ import biz.moapp.english_dictionary.ui.search_result.parts_compose.SoundIcon
 
 @Composable
 fun MeanTab(modifier: Modifier = Modifier, keyWord: String, data: List<String>,){
-    Column( modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.Start){
-        /**英単語**/
-        Row {
-            Text(modifier = Modifier.padding(4.dp),
-                text = keyWord,
-                fontWeight = FontWeight.Bold,
-                fontSize = 36.sp)
-            SoundIcon(word = keyWord, modifier = Modifier.padding(top = 8.dp))
-        }
-        /**意味**/
+    /**英単語**/
+    Row {
         Text(modifier = Modifier.padding(4.dp),
-            text = "意味",
+            text = keyWord,
             fontWeight = FontWeight.Bold,
-            fontSize = 16.sp)
+            fontSize = 36.sp)
+        SoundIcon(word = keyWord, modifier = Modifier.padding(top = 8.dp))
+    }
+    /**意味**/
+    Text(modifier = Modifier.padding(4.dp),
+        text = "意味",
+        fontWeight = FontWeight.Bold,
+        fontSize = 16.sp)
 
-        /**日本語意味のリスト**/
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(4.dp),
-            horizontalAlignment = Alignment.Start
-        ) {
-            items(data) { value ->
-                Text(text = "・${value}")
-            }
+    /**日本語意味のリスト**/
+    LazyColumn(
+        modifier = Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(4.dp),
+        horizontalAlignment = Alignment.Start
+    ) {
+        items(data) { value ->
+            Text(text = "・${value}")
         }
     }
 }

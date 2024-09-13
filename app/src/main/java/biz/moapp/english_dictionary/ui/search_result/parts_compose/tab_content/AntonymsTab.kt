@@ -8,10 +8,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import biz.moapp.english_dictionary.data.json_row.Synonym
+import biz.moapp.english_dictionary.data.json_row.Antonyms
 
 @Composable
-fun SynonymsTab(modifier: Modifier = Modifier, synonyms: List<Synonym>){
+fun AntonymsTab(modifier: Modifier = Modifier, synonyms: List<Antonyms>){
     synonyms.forEach { _ ->
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
