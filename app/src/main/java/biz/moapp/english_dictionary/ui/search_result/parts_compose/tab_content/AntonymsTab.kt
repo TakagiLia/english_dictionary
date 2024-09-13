@@ -1,7 +1,5 @@
 package biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
@@ -14,19 +12,15 @@ import biz.moapp.english_dictionary.data.json_row.Antonyms
 
 @Composable
 fun AntonymsTab(modifier: Modifier = Modifier, synonyms: List<Antonyms>){
-    Column( modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.Start) {
-        synonyms.forEach { _ ->
-            LazyColumn(
-                modifier = Modifier.fillMaxSize(),
-                contentPadding = PaddingValues(4.dp),
-                horizontalAlignment = Alignment.Start
-            ) {
-                synonyms.forEach { _ ->
-                    items(synonyms) { synonym ->
-                        TwoLinesListItem(synonym.word, synonym.japaneseMeaning)
-                    }
+    synonyms.forEach { _ ->
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(4.dp),
+            horizontalAlignment = Alignment.Start
+        ) {
+            synonyms.forEach { _ ->
+                items(synonyms) { synonym ->
+                    TwoLinesListItem(synonym.word, synonym.japaneseMeaning)
                 }
             }
         }

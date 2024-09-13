@@ -101,13 +101,34 @@ fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyW
                 (searchResultViewModel.resultUiState.sendResultState  as ResultUiState.SendResultState.Success).results?.let { data ->
                     /**インデックスによってタブ内容が切り替わる**/
                     HorizontalPager(state = viewPagerState) { pageNum->
+                        Column( modifier = Modifier.fillMaxSize(),
+                            verticalArrangement = Arrangement.Top,
+                            horizontalAlignment = Alignment.Start) {
+                            when (pageNum) {
+                                0 -> {
+                                    MeanTab(
+                                        modifier,
+                                        keyWord ?: "No keyWord",
+                                        data.japaneseMeaning,
+                                    )
+                                }
 
-                        when (pageNum) {
-                            0 -> { MeanTab(modifier,keyWord ?: "No keyWord", data.japaneseMeaning,) }
-                            1 -> { SynonymsTab(modifier,data.synonyms) }
-                            2 -> { AntonymsTab(modifier,data.antonyms) }
-                            3 -> { ExampleTab(modifier,data.exampleSentences) }
-                            4 -> { WordRootsTab(data.wordRoots) }
+                                1 -> {
+                                    SynonymsTab(modifier, data.synonyms)
+                                }
+
+                                2 -> {
+                                    AntonymsTab(modifier, data.antonyms)
+                                }
+
+                                3 -> {
+                                    ExampleTab(modifier, data.exampleSentences)
+                                }
+
+                                4 -> {
+                                    WordRootsTab(data.wordRoots)
+                                }
+                            }
                         }
                     }
                 }
