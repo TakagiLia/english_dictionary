@@ -14,6 +14,7 @@ import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -61,21 +62,24 @@ fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyW
         }
 
         /**タブ**/
-        Log.d("--TabRow","currentPage1: ${viewPagerState.currentPage}")
+        SideEffect {
+            Log.d("--TabRow", "currentPage1: ${viewPagerState.currentPage}")
+        }
         ScrollableTabRow(
             selectedTabIndex = viewPagerState.currentPage,
             edgePadding = 0.dp
         ) {
             tabLabels.forEachIndexed { index,value ->
-                Log.d("--TabRow","index: ${index}")
-                Log.d("--TabRow","value: ${value}")
+                SideEffect {
+                    Log.d("--TabRow", "index: ${index}")
+                    Log.d("--TabRow", "value: ${value}")
+                }
                 Tab(
                     selected = viewPagerState.currentPage == index,
                     onClick = {
                         viewPagerScope.launch {
                             viewPagerState.animateScrollToPage(index)
                         }
-                        Log.d("--TabRow","currentPage2: ${viewPagerState.currentPage}")
                     },
                     text = {
                         Text(
