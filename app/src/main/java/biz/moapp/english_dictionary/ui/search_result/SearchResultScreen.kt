@@ -105,9 +105,9 @@ fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyW
                         when (pageNum) {
                             0 -> { MeanTab(modifier,keyWord ?: "No keyWord", data.japaneseMeaning,) }
                             1 -> { SynonymsTab(modifier,data.synonyms) }
-                            2 -> { AntonymsTab() }
+                            2 -> { AntonymsTab(modifier,data.antonyms) }
                             3 -> { ExampleTab(modifier,data.exampleSentences) }
-                            4 -> { WordRootsTab() }
+                            4 -> { WordRootsTab(data.wordRoots) }
                         }
                     }
                 }
