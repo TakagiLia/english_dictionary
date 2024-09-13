@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -108,31 +109,33 @@ fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyW
                         Column( modifier = Modifier.fillMaxSize(),
                             verticalArrangement = Arrangement.Top,
                             horizontalAlignment = Alignment.Start) {
-                            when (pageNum) {
-                                0 -> {
-                                    MeanTab(
-                                        modifier,
-                                        keyWord ?: "No keyWord",
-                                        data.japaneseMeaning,
-                                    )
-                                }
+                            key(pageNum != viewPagerState.currentPage) {
+                                when (pageNum) {
+                                    0 -> {
+                                        MeanTab(
+                                            modifier,
+                                            keyWord ?: "No keyWord",
+                                            data.japaneseMeaning,
+                                        )
+                                    }
 
-                                1 -> {
-                                    SynonymsTab(modifier, data.synonyms)
-                                }
+                                    1 -> {
+                                        SynonymsTab(modifier, data.synonyms)
+                                    }
 
-                                2 -> {
-                                    AntonymsTab(modifier, data.antonyms)
-                                }
+                                    2 -> {
+                                        AntonymsTab(modifier, data.antonyms)
+                                    }
 
-                                3 -> {
-                                    ExampleTab(modifier, data.exampleSentences)
-                                }
+                                    3 -> {
+                                        ExampleTab(modifier, data.exampleSentences)
+                                    }
 
-                                4 -> {
-                                    WordRootsTab(data.wordRoots)
+                                    4 -> {
+                                        WordRootsTab(data.wordRoots)
+                                    }
                                 }
-                            }
+                        }
                         }
                     }
                 }
