@@ -11,18 +11,14 @@ import androidx.compose.ui.unit.dp
 import biz.moapp.english_dictionary.data.json_row.Synonym
 
 @Composable
-fun SynonymsTab(modifier: Modifier = Modifier, synonyms: List<Synonym>){
-    synonyms.forEach { _ ->
+fun SynonymsTab(modifier: Modifier = Modifier, synonyms: List<Synonym>, ){
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             contentPadding = PaddingValues(4.dp),
             horizontalAlignment = Alignment.Start
         ) {
-            synonyms.forEach { _ ->
-                items(synonyms) { synonym ->
-                    TwoLinesListItem(synonym.word, synonym.japaneseMeaning)
-                }
+            items(synonyms) { synonym ->
+                TwoLinesListItem(synonym.word, synonym.japaneseMeaning,)
             }
         }
-    }
 }

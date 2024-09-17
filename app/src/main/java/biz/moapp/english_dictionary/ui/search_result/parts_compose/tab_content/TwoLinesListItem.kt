@@ -14,12 +14,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import biz.moapp.english_dictionary.R
 import biz.moapp.english_dictionary.ui.search_result.parts_compose.SoundIcon
+import biz.moapp.english_dictionary.ui.search_result.rememberTextToSpeech
 
 @Composable
-fun TwoLinesListItem(word: String, japaneseMeaning: String ){
+fun TwoLinesListItem(word: String, japaneseMeaning: String,){
+    val tts = rememberTextToSpeech()
+
     Spacer(modifier = Modifier.height(8.dp))
     Row {
-        SoundIcon(word = word)
+        SoundIcon(word = word,tts = tts.value)
         Column(modifier = Modifier.padding(top = 2.dp)) {
             Text(text = stringResource(R.string.synonyms_eng_label) + word)
             Spacer(modifier = Modifier.height(4.dp))

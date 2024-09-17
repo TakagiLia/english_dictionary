@@ -13,15 +13,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import biz.moapp.english_dictionary.R
-import biz.moapp.english_dictionary.ui.search_result.rememberTextToSpeech
 
 @Composable
-fun SoundIcon(word :String, modifier: Modifier = Modifier){
-    val tts = rememberTextToSpeech()
+fun SoundIcon(word :String, modifier: Modifier = Modifier, tts: TextToSpeech?){
     val onClick = remember(tts, word) {
-        { tts.value?.speak(word, TextToSpeech.QUEUE_ADD, null, null) }
+        { tts?.speak(word, TextToSpeech.QUEUE_ADD, null, null) }
     }
-
     Row(modifier = modifier.clickable(onClick = { onClick() },
         indication = null, //indication = nullでリップル削除
         interactionSource = remember { MutableInteractionSource() },)){

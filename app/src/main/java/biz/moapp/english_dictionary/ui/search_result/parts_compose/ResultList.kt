@@ -10,10 +10,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import biz.moapp.english_dictionary.ui.search_result.rememberTextToSpeech
 
 @Composable
 fun ResultList(data: List<String>){
-
+    val tts = rememberTextToSpeech()
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         contentPadding = PaddingValues(4.dp),
@@ -22,7 +23,7 @@ fun ResultList(data: List<String>){
         items(data) { value ->
             Spacer(modifier = Modifier.height(8.dp))
             Row {
-                SoundIcon(value)
+                SoundIcon(word = value, tts = tts.value)
                 Text(text = value)
             }
             Spacer(modifier = Modifier.height(8.dp))

@@ -1,6 +1,5 @@
 package biz.moapp.english_dictionary.ui.search_result
 
-import android.util.Log
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
@@ -14,7 +13,6 @@ import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
@@ -28,6 +26,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import biz.moapp.english_dictionary.R
+import biz.moapp.english_dictionary.data.json_row.Antonyms
 import biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content.AntonymsTab
 import biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content.ExampleTab
 import biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content.MeanTab
@@ -63,18 +62,18 @@ fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyW
         }
 
         /**タブ**/
-        SideEffect {
-            Log.d("--TabRow", "currentPage1: ${viewPagerState.currentPage}")
-        }
+//        SideEffect {
+//            Log.d("--TabRow", "currentPage1: ${viewPagerState.currentPage}")
+//        }
         ScrollableTabRow(
             selectedTabIndex = viewPagerState.currentPage,
             edgePadding = 0.dp
         ) {
             tabLabels.forEachIndexed { index,value ->
-                SideEffect {
-                    Log.d("--TabRow", "index: ${index}")
-                    Log.d("--TabRow", "value: ${value}")
-                }
+//                SideEffect {
+//                    Log.d("--TabRow", "index: ${index}")
+//                    Log.d("--TabRow", "value: ${value}")
+//                }
                 Tab(
                     selected = viewPagerState.currentPage == index,
                     onClick = {
