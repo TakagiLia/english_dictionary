@@ -1,7 +1,5 @@
 package biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize

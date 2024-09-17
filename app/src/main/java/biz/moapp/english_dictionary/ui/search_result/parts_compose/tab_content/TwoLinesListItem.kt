@@ -16,10 +16,10 @@ import biz.moapp.english_dictionary.R
 import biz.moapp.english_dictionary.ui.search_result.parts_compose.SoundIcon
 
 @Composable
-fun TwoLinesListItem(word: String, japaneseMeaning: String ){
+fun TwoLinesListItem(word: String, japaneseMeaning: String,){
     Spacer(modifier = Modifier.height(8.dp))
     Row {
-        SoundIcon(word = word)
+        SoundIcon(word = word,)
         Column(modifier = Modifier.padding(top = 2.dp)) {
             Text(text = stringResource(R.string.synonyms_eng_label) + word)
             Spacer(modifier = Modifier.height(4.dp))
