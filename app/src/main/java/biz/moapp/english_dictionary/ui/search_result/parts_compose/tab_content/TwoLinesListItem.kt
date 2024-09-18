@@ -1,5 +1,6 @@
 package biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content
 
+import android.speech.tts.TextToSpeech
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -14,15 +15,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import biz.moapp.english_dictionary.R
 import biz.moapp.english_dictionary.ui.search_result.parts_compose.SoundIcon
-import biz.moapp.english_dictionary.ui.search_result.rememberTextToSpeech
 
 @Composable
-fun TwoLinesListItem(word: String, japaneseMeaning: String,){
-    val tts = rememberTextToSpeech()
+fun TwoLinesListItem(word: String, japaneseMeaning: String,tts: TextToSpeech?){
 
     Spacer(modifier = Modifier.height(8.dp))
     Row {
-        SoundIcon(word = word,tts = tts.value)
+        SoundIcon(word = word,tts = tts)
         Column(modifier = Modifier.padding(top = 2.dp)) {
             Text(text = stringResource(R.string.synonyms_eng_label) + word)
             Spacer(modifier = Modifier.height(4.dp))

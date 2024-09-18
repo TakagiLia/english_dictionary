@@ -1,5 +1,6 @@
 package biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content
 
+import android.speech.tts.TextToSpeech
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,18 +15,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import biz.moapp.english_dictionary.ui.search_result.parts_compose.SoundIcon
-import biz.moapp.english_dictionary.ui.search_result.rememberTextToSpeech
 
 @Composable
-fun MeanTab(modifier: Modifier = Modifier, keyWord: String, data: List<String>,){
-    val tts = rememberTextToSpeech()
+fun MeanTab(modifier: Modifier = Modifier, keyWord: String, data: List<String>, tts: TextToSpeech?,){
     /**英単語**/
     Row {
         Text(modifier = Modifier.padding(4.dp),
             text = keyWord,
             fontWeight = FontWeight.Bold,
             fontSize = 36.sp)
-        SoundIcon(word = keyWord, modifier = Modifier.padding(top = 8.dp), tts = tts.value)
+        SoundIcon(word = keyWord, modifier = Modifier.padding(top = 8.dp), tts = tts)
     }
     /**意味**/
     Text(modifier = Modifier.padding(4.dp),

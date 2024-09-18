@@ -26,7 +26,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import biz.moapp.english_dictionary.R
-import biz.moapp.english_dictionary.data.json_row.Antonyms
 import biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content.AntonymsTab
 import biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content.ExampleTab
 import biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content.MeanTab
@@ -45,6 +44,7 @@ fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyW
         val viewPagerScope = rememberCoroutineScope()
 
         var initialized by remember { mutableStateOf(false) }
+        val tts = rememberTextToSpeech()
 
         /**端末戻るボタンの制御**/
         BackHandler(
@@ -114,20 +114,20 @@ fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyW
                                         MeanTab(
                                             modifier,
                                             keyWord ?: "No keyWord",
-                                            data.japaneseMeaning,
+                                            data.japaneseMeaning,tts.value
                                         )
                                     }
 
                                     1 -> {
-                                        SynonymsTab(modifier, data.synonyms)
+                                        SynonymsTab(modifier, data.synonyms, tts.value)
                                     }
 
                                     2 -> {
-                                        AntonymsTab(modifier, data.antonyms)
+                                        AntonymsTab(modifier, data.antonyms, tts.value)
                                     }
 
                                     3 -> {
-                                        ExampleTab(modifier, data.exampleSentences)
+                                        ExampleTab(modifier, data.exampleSentences, tts.value)
                                     }
 
                                     4 -> {
