@@ -1,6 +1,8 @@
 package biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content
 
 import android.speech.tts.TextToSpeech
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,6 +11,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -18,8 +21,14 @@ import biz.moapp.english_dictionary.ui.search_result.parts_compose.SoundIcon
 
 @Composable
 fun MeanTab(modifier: Modifier = Modifier, keyWord: String, data: List<String>, tts: TextToSpeech?,){
+    val onClick = remember(tts, keyWord) {
+        { tts?.speak(keyWord, TextToSpeech.QUEUE_ADD, null, null) }
+    }
+
     /**英単語**/
-    Row {
+    Row(modifier = Modifier.clickable(onClick = { onClick() },
+        indication = null,
+        interactionSource = remember { MutableInteractionSource() },)) {
         Text(modifier = Modifier.padding(4.dp),
             text = keyWord,
             fontWeight = FontWeight.Bold,
