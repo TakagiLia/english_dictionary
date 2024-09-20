@@ -25,7 +25,10 @@ import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import biz.moapp.english_dictionary.R
+import biz.moapp.english_dictionary.navigation.Nav
 import biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content.AntonymsTab
 import biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content.ExampleTab
 import biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content.MeanTab
@@ -35,7 +38,8 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyWord", searchResultViewModel: SearchResultViewModel,){
+fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyWord",
+                       searchResultViewModel: SearchResultViewModel, navController:NavController){
     Column(modifier = modifier.fillMaxSize()) {
         /**タブ名前取得**/
         val tabLabels = stringArrayResource(R.array.tab_labels)
@@ -45,12 +49,17 @@ fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyW
 
         var initialized by remember { mutableStateOf(false) }
         val tts = rememberTextToSpeech()
+        val backStackEntry by navController.currentBackStackEntryAsState()
 
         /**端末戻るボタンの制御**/
         BackHandler(
             enabled = true
         ) {
-            //ここに実行したい処理を記載(何もなけれ動作なしになる)
+            navController.navigate(Nav.TopScreen.name){
+                backStackEntry?.destination?.route?.let {
+                    popUpTo(it) { inclusive = true }
+                }
+            }
         }
 
         /**初期表示のための処理**/
