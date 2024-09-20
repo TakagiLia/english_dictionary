@@ -156,7 +156,7 @@ fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyW
 
                     is ResultUiState.SendResultState.Error -> {
                         Column(
-                            modifier = modifier.fillMaxSize(),
+                            modifier = modifier.fillMaxSize().padding(bottom = 120.dp),
                             verticalArrangement = Arrangement.Center,
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
