@@ -44,6 +44,7 @@ fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyW
     Column(modifier = modifier.fillMaxSize()) {
         /**タブ名前取得**/
         val tabLabels = stringArrayResource(R.array.tab_labels)
+
         /**タブインデックスの保持**/
         val viewPagerState = rememberPagerState(pageCount = { 5 })
         val viewPagerScope = rememberCoroutineScope()
@@ -56,7 +57,7 @@ fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyW
         BackHandler(
             enabled = true
         ) {
-            navController.navigate(Nav.TopScreen.name){
+            navController.navigate(Nav.TopScreen.name) {
                 backStackEntry?.destination?.route?.let {
                     popUpTo(it) { inclusive = true }
                 }
@@ -79,7 +80,7 @@ fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyW
             selectedTabIndex = viewPagerState.currentPage,
             edgePadding = 0.dp
         ) {
-            tabLabels.forEachIndexed { index,value ->
+            tabLabels.forEachIndexed { index, value ->
 //                SideEffect {
 //                    Log.d("--TabRow", "index: ${index}")
 //                    Log.d("--TabRow", "value: ${value}")
@@ -100,62 +101,69 @@ fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyW
                 )
             }
         }
+        HorizontalPager(state = viewPagerState) { pageNum ->
+                /**タブの内容**/
+                when (searchResultViewModel.resultUiState.sendResultState) {
+                    is ResultUiState.SendResultState.NotYet -> {}
+                    is ResultUiState.SendResultState.Loading -> {
+                        Column(
+                            modifier = modifier.fillMaxSize().padding(bottom = 120.dp),
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            CircularProgressIndicator()
+                        }
+                    }
 
-        /**タブの内容**/
-        when(searchResultViewModel.resultUiState.sendResultState){
-            is ResultUiState.SendResultState.NotYet -> {}
-            is ResultUiState.SendResultState.Loading -> {
-                Column(modifier = modifier.fillMaxSize().padding(bottom = 120.dp),
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally) {
-                    CircularProgressIndicator()
-                }
-            }
-            is ResultUiState.SendResultState.Success -> {
-                (searchResultViewModel.resultUiState.sendResultState  as ResultUiState.SendResultState.Success).results?.let { data ->
-                    /**インデックスによってタブ内容が切り替わる**/
-                    HorizontalPager(state = viewPagerState) { pageNum->
-                        Column( modifier = Modifier.fillMaxSize(),
-                            verticalArrangement = Arrangement.Top,
-                            horizontalAlignment = Alignment.Start) {
-                            key(pageNum != viewPagerState.currentPage) {
-                                when (pageNum) {
-                                    0 -> {
-                                        MeanTab(
-                                            modifier,
-                                            keyWord ?: "No keyWord",
-                                            data.japaneseMeaning,tts.value
-                                        )
-                                    }
+                    is ResultUiState.SendResultState.Success -> {
+                        (searchResultViewModel.resultUiState.sendResultState as ResultUiState.SendResultState.Success).results?.let { data ->
+                            /**インデックスによってタブ内容が切り替わる**/
+                            Column(
+                                modifier = Modifier.fillMaxSize(),
+                                verticalArrangement = Arrangement.Top,
+                                horizontalAlignment = Alignment.Start
+                            ) {
+                                key(pageNum != viewPagerState.currentPage) {
+                                    when (pageNum) {
+                                        0 -> {
+                                            MeanTab(
+                                                modifier,
+                                                keyWord ?: "No keyWord",
+                                                data.japaneseMeaning, tts.value
+                                            )
+                                        }
 
-                                    1 -> {
-                                        SynonymsTab(modifier, data.synonyms, tts.value)
-                                    }
+                                        1 -> {
+                                            SynonymsTab(modifier, data.synonyms, tts.value)
+                                        }
 
-                                    2 -> {
-                                        AntonymsTab(modifier, data.antonyms, tts.value)
-                                    }
+                                        2 -> {
+                                            AntonymsTab(modifier, data.antonyms, tts.value)
+                                        }
 
-                                    3 -> {
-                                        ExampleTab(modifier, data.exampleSentences, tts.value)
-                                    }
+                                        3 -> {
+                                            ExampleTab(modifier, data.exampleSentences, tts.value)
+                                        }
 
-                                    4 -> {
-                                        WordRootsTab(data.wordRoots)
+                                        4 -> {
+                                            WordRootsTab(data.wordRoots)
+                                        }
                                     }
                                 }
+                            }
                         }
+                    }
+
+                    is ResultUiState.SendResultState.Error -> {
+                        Column(
+                            modifier = modifier.fillMaxSize(),
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Text(text = stringResource(R.string.search_result_error))
                         }
                     }
                 }
-            }
-            is ResultUiState.SendResultState.Error -> {
-                Column(modifier = modifier.fillMaxSize(),
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text(text = stringResource(R.string.search_result_error))
-                }
-            }
         }
     }
 }
