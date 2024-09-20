@@ -2,7 +2,6 @@ package biz.moapp.english_dictionary
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.OnBackPressedCallback
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -21,9 +20,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        /**Homeの戻るの制御**/
-        onBackPressedDispatcher.addCallback(callback)
-
         /**AssetからCSV読み込み**/
         val topScreenViewModel: TopScreenViewModel by viewModels()
         topScreenViewModel.readCsvDataFromAsset(this)
@@ -40,13 +36,6 @@ class MainActivity : ComponentActivity() {
                     BaseScreen(topScreenViewModel, searchResultViewModel,)
                 }
             }
-        }
-    }
-    private val callback = object : OnBackPressedCallback(true) {
-        /**handleOnBackPressedを呼び出して、戻るキーを押したときの処理を記述**/
-        override fun handleOnBackPressed() {
-            /**ハードの戻るボタンでアプリ終了**/
-            return finish()
         }
     }
 }

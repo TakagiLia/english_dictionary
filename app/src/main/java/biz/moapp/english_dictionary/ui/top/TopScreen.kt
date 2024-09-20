@@ -34,7 +34,7 @@ fun TopScreen(modifier: Modifier = Modifier,
 
     /**端末戻るボタンの制御**/
     BackHandler(
-        enabled = true
+        enabled = false
     ) {
         //ここに実行したい処理を記載(何もなけれ動作なしになる)
     }

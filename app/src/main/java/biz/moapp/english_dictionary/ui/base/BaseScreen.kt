@@ -48,7 +48,8 @@ fun BaseScreen(topScreenViewModel: TopScreenViewModel, searchResultViewModel: Se
                 arguments = listOf(navArgument("keyWord") { type = NavType.StringType })
             ) {backStackEntry ->
                 val keyWord = backStackEntry.arguments?.getString("keyWord")
-                SearchResultScreen(Modifier.padding(innerPadding),keyWord, searchResultViewModel,)
+                SearchResultScreen(Modifier.padding(innerPadding), keyWord,
+                    searchResultViewModel, navController)
             }
         }
     }

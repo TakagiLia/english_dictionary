@@ -72,24 +72,39 @@ class SearchResultViewModel
                                 Log.d("--wordInfo Json", "${result.choices[0].message?.content}")
 
                                 /**受け取ったレスポンスをJsonに整形してWordInfoに変換**/
-                                val wordInfo =
+                                val convertJsonResult =
                                     convertJsonToWordInfo(result.choices[0].message?.content ?: "")
-                                /**一度検索したものは履歴として残す**/
-                                wordInfo?.let {
-                                    _searchHistory.value = mutableMapOf(word to it)
-                                }
-                                Log.d("--wordInfo japaneseMeaning", "${wordInfo?.japaneseMeaning}")
-                                Log.d("--wordInfo exampleSentences", "${wordInfo?.exampleSentences}")
-                                Log.d("--wordInfo synonyms", "${wordInfo?.synonyms}")
-                                Log.d("--wordInfo antonyms", "${wordInfo?.antonyms}")
-                                Log.d("--wordInfo wordRoots", "${wordInfo?.wordRoots}")
 
-                                resultUiState.copy(
-                                    result = wordInfo,
-                                    sendResultState = ResultUiState.SendResultState.Success(
-                                        wordInfo
-                                    )
-                                )
+                                /**変換失敗したか判定**/
+                               if(convertJsonResult.isSuccess){
+                                   convertJsonResult.getOrNull().let { wordInfo ->
+                                       /**一度検索したものは履歴として残す**/
+                                       wordInfo?.let {
+                                           _searchHistory.value = mutableMapOf(word to it)
+                                       }
+
+                                       Log.d("--wordInfo japaneseMeaning", "${wordInfo?.japaneseMeaning}")
+                                       Log.d("--wordInfo exampleSentences", "${wordInfo?.exampleSentences}")
+                                       Log.d("--wordInfo synonyms", "${wordInfo?.synonyms}")
+                                       Log.d("--wordInfo antonyms", "${wordInfo?.antonyms}")
+                                       Log.d("--wordInfo wordRoots", "${wordInfo?.wordRoots}")
+
+                                       /**ステータス更新（成功）**/
+                                       resultUiState.copy(
+                                           result = wordInfo,
+                                           sendResultState = ResultUiState.SendResultState.Success(
+                                               wordInfo
+                                           )
+                                       )
+                                   }
+                               }else{
+                                   /**ステータス更新（失敗）**/
+                                   resultUiState.copy(
+                                       sendResultState = ResultUiState.SendResultState.Error(
+                                           "JSON Error"
+                                       )
+                                   )
+                               }
                             }
 
                             is ChatCompletions.Response.Failure -> {
@@ -101,7 +116,7 @@ class SearchResultViewModel
                             }
                         }
                     }.onFailure { e ->
-                        Log.e("--getEnglishMean Error", "Message:${e.message}", e)
+                        Log.e("--Error", "getEnglishMean  Message:${e.message}", e)
                     }
             }
         }

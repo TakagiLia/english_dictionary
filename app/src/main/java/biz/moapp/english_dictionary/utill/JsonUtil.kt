@@ -6,8 +6,8 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
 object JsonUtil {
-    fun convertJsonToWordInfo(rowJson:String) :WordInfo?{
-        try {
+    fun convertJsonToWordInfo(rowJson:String) :Result<WordInfo>{
+        return runCatching {
             val json = rowJson
                 .replace("\n", "")
                 .replace("  ", "")
@@ -23,11 +23,10 @@ object JsonUtil {
 
             val adapter = moshi.adapter(WordInfo::class.java)
 
-            return adapter.fromJson(json)
-        }catch (e:Exception){
-            Log.e("--Error convertJsonToWordInfo","Message: ${e.message}",e)
+            adapter.fromJson(json)!!
+        }.onFailure { e ->
+            Log.e("--Error", "convertJsonToWordInfo  Message:${e.message}", e)
         }
-       return null
     }
 
     fun convertStringToList(japaneseMeaning :String) :List<String>{
