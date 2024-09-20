@@ -19,13 +19,16 @@ import biz.moapp.english_dictionary.navigation.Nav
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopBar(navController :NavController){
+fun TopBar(navController :NavController, searchWord :String){
     val backStackEntry by navController.currentBackStackEntryAsState()
     val selectedRoute = backStackEntry?.destination?.route
+    /**検索結果画面のタイトルに表示、初期画面の場合はアプリタイトル**/
+    val title = if(selectedRoute != Nav.TopScreen.name) searchWord else stringResource(R.string.app_name)
+
     CenterAlignedTopAppBar(
         title = {
             Text(
-                text = stringResource(R.string.app_name),
+                text = title,
                 fontWeight = FontWeight.Bold
             )
         },

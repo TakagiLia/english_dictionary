@@ -32,10 +32,16 @@ class SearchResultViewModel
     private val _searchHistory = MutableStateFlow<Map<String, WordInfo>>(emptyMap())
     val searchHistory: StateFlow<Map<String, WordInfo>> = _searchHistory.asStateFlow()
 
+    private val _searchKeyWord = MutableStateFlow<String>("")
+    val searchKeyWord: StateFlow<String> = _searchKeyWord.asStateFlow()
+
     var resultUiState by mutableStateOf(ResultUiState())
         private set
 
     fun getEnglishMean(word :String){
+        /**選択した単語を保持、検索結果画面のタイトルに表示**/
+        _searchKeyWord.value = word
+
         viewModelScope.launch {
             /**ローディング**/
             resultUiState = resultUiState.copy(sendResultState = ResultUiState.SendResultState.Loading)
