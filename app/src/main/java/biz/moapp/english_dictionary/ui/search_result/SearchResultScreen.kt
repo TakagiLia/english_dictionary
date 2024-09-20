@@ -5,6 +5,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.CircularProgressIndicator
@@ -104,7 +105,7 @@ fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyW
         when(searchResultViewModel.resultUiState.sendResultState){
             is ResultUiState.SendResultState.NotYet -> {}
             is ResultUiState.SendResultState.Loading -> {
-                Column(modifier = modifier.fillMaxSize(),
+                Column(modifier = modifier.fillMaxSize().padding(bottom = 120.dp),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally) {
                     CircularProgressIndicator()
