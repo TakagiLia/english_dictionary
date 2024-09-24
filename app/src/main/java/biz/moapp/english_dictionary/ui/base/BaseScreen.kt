@@ -19,9 +19,10 @@ import biz.moapp.english_dictionary.ui.search_result.SearchResultScreen
 import biz.moapp.english_dictionary.ui.search_result.SearchResultViewModel
 import biz.moapp.english_dictionary.ui.top.TopScreen
 import biz.moapp.english_dictionary.ui.top.TopScreenViewModel
+import com.google.android.gms.ads.AdView
 
 @Composable
-fun BaseScreen(topScreenViewModel: TopScreenViewModel, searchResultViewModel: SearchResultViewModel,) {
+fun BaseScreen(topScreenViewModel: TopScreenViewModel, searchResultViewModel: SearchResultViewModel, banner: AdView) {
     val navController = rememberNavController()
     val searchWord = searchResultViewModel.searchKeyWord.collectAsState()
     Scaffold(modifier = Modifier.fillMaxSize(), topBar = { TopBar(navController, searchWord.value) }, /*bottomBar = { BottomBar()}*/){  innerPadding ->
@@ -43,7 +44,7 @@ fun BaseScreen(topScreenViewModel: TopScreenViewModel, searchResultViewModel: Se
             composable(route = Nav.TopScreen.name,) {
                 TopScreen(Modifier.padding(innerPadding),
                     topScreenViewModel,
-                    navController)
+                    navController, banner)
             }
             composable(route = "${Nav.SearchResultScreen.name}/{keyWord}",
                 arguments = listOf(navArgument("keyWord") { type = NavType.StringType })
