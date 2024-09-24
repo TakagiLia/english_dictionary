@@ -50,6 +50,7 @@ fun TopScreen(modifier: Modifier = Modifier,
         SearchBar(modifier, topScreenViewModel)
 
         if(filterData.value.isEmpty()){
+            Spacer(modifier = Modifier.height(4.dp))
             Box(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
