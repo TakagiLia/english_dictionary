@@ -5,7 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -17,10 +17,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import biz.moapp.english_dictionary.ui.search_result.parts_compose.NativeAds
 import biz.moapp.english_dictionary.ui.search_result.parts_compose.SoundIcon
+import com.google.android.gms.ads.nativead.NativeAdView
 
 @Composable
-fun MeanTab(modifier: Modifier = Modifier, keyWord: String, data: List<String>, tts: TextToSpeech?,){
+fun MeanTab(modifier: Modifier = Modifier, keyWord: String, data: List<String>, tts: TextToSpeech?,
+            nativeAdView: NativeAdView,){
     val onClick = remember(tts, keyWord) {
         { tts?.speak(keyWord, TextToSpeech.QUEUE_ADD, null, null) }
     }
@@ -43,7 +46,7 @@ fun MeanTab(modifier: Modifier = Modifier, keyWord: String, data: List<String>, 
 
     /**日本語意味のリスト**/
     LazyColumn(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxHeight(0.4f),
         contentPadding = PaddingValues(4.dp),
         horizontalAlignment = Alignment.Start
     ) {
@@ -51,4 +54,6 @@ fun MeanTab(modifier: Modifier = Modifier, keyWord: String, data: List<String>, 
             Text(text = "・${value}")
         }
     }
+    /**ネイティブ広告表示**/
+    NativeAds(nativeAdView)
 }

@@ -51,6 +51,7 @@ android {
     }
     buildFeatures {
         compose = true
+        dataBinding=true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -72,6 +73,8 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    /**constraintlayout**/
+    implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -100,4 +103,7 @@ dependencies {
 
     /**マテリアルデザインのアイコン追加パッケージ**/
     implementation (libs.androidx.material.icons.extended)
+
+    /**Ad_Mob**/
+    implementation(libs.admob)
 }
