@@ -100,4 +100,7 @@ dependencies {
 
     /**マテリアルデザインのアイコン追加パッケージ**/
     implementation (libs.androidx.material.icons.extended)
+
+    /**Ad_Mob**/
+    implementation(libs.admob)
 }
