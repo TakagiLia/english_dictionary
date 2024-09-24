@@ -9,12 +9,10 @@
         <item>語源</item>
     </array>
 
-    <!--Banner広告のID-->
-    <string name="banner_ad_id">ca-app-pub-5071120464333172/7299465232</string>
+    <!--Banner広告のID（テスト用）-->
     <string name="banner_ad_id_test">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="admob_native_unit_id">ca-app-pub-5071120464333172/6206709563</string>
     <string name="admob_native_unit_id_test">ca-app-pub-3940256099942544/2247696110</string>
-    
+
     <!--Top画面で表示-->
     <string name="search_bar_placeholders">検索したい単語を英字入力</string>
     <string name="search_result_nothing">該当する単語がありません</string>
