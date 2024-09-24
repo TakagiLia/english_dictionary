@@ -8,6 +8,10 @@
         <item>例文</item>
         <item>語源</item>
     </array>
+
+    <!--Banner広告のID-->
+    <string name="banner_ad_id">ca-app-pub-5071120464333172/7299465232</string>
+    <string name="banner_ad_id_test">ca-app-pub-3940256099942544/6300978111</string>
     
     <!--Top画面で表示-->
     <string name="search_bar_placeholders">検索したい単語を英字入力</string>
