@@ -1,5 +1,6 @@
 package biz.moapp.english_dictionary.ui.search_result
 
+import android.util.Log
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
@@ -35,12 +36,15 @@ import biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content.E
 import biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content.MeanTab
 import biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content.SynonymsTab
 import biz.moapp.english_dictionary.ui.search_result.parts_compose.tab_content.WordRootsTab
+import com.google.android.gms.ads.nativead.NativeAdView
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyWord",
-                       searchResultViewModel: SearchResultViewModel, navController:NavController){
+fun SearchResultScreen(modifier: Modifier = Modifier, keyWord :String? = "No KeyWord",
+                       searchResultViewModel: SearchResultViewModel, navController:NavController,
+                       nativeAdView: NativeAdView,){
+    Log.d("--nativeAdView2", "SearchResultScreen:${nativeAdView.parent}")
     Column(modifier = modifier.fillMaxSize()) {
         /**タブ名前取得**/
         val tabLabels = stringArrayResource(R.array.tab_labels)
@@ -129,7 +133,8 @@ fun SearchResultScreen(modifier: Modifier = Modifier,keyWord :String? = "No KeyW
                                             MeanTab(
                                                 modifier,
                                                 keyWord ?: "No keyWord",
-                                                data.japaneseMeaning, tts.value
+                                                data.japaneseMeaning, tts.value,
+                                                nativeAdView
                                             )
                                         }
 
