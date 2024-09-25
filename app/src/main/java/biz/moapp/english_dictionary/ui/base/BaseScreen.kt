@@ -46,6 +46,9 @@ fun BaseScreen(topScreenViewModel: TopScreenViewModel, searchResultViewModel: Se
             },
         ) {
             composable(route = Nav.TopScreen.name,) {
+                /**初期画面のためSearchResultView画面初期化**/
+                searchResultViewModel.clearSearchResultView()
+
                 TopScreen(Modifier.padding(innerPadding),
                     topScreenViewModel,
                     navController, banner)

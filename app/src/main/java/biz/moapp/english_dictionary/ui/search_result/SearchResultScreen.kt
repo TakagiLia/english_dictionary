@@ -6,12 +6,13 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -27,6 +28,7 @@ import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import biz.moapp.english_dictionary.R
@@ -80,9 +82,9 @@ fun SearchResultScreen(modifier: Modifier = Modifier, keyWord :String? = "No Key
 //        SideEffect {
 //            Log.d("--TabRow", "currentPage1: ${viewPagerState.currentPage}")
 //        }
-        ScrollableTabRow(
+       TabRow(
+            modifier = Modifier.fillMaxWidth(),
             selectedTabIndex = viewPagerState.currentPage,
-            edgePadding = 0.dp
         ) {
             tabLabels.forEachIndexed { index, value ->
 //                SideEffect {
@@ -100,6 +102,7 @@ fun SearchResultScreen(modifier: Modifier = Modifier, keyWord :String? = "No Key
                         Text(
                             text = value,
                             fontWeight = FontWeight.Bold,
+                            fontSize = 12.sp
                         )
                     }
                 )

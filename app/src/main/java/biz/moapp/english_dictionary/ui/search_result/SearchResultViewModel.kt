@@ -124,7 +124,13 @@ class SearchResultViewModel
                     }.onFailure { e ->
                         Log.e("--Error", "getEnglishMean  Message:${e.message}", e)
                     }
-            }
+                }
         }
     }
+
+    /**遷移時の画面初期化**/
+    fun clearSearchResultView(){
+        resultUiState = resultUiState.copy(sendResultState = ResultUiState.SendResultState.NotYet)
+    }
+
  }
