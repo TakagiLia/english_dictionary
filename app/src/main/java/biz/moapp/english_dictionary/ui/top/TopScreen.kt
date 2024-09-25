@@ -16,7 +16,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import biz.moapp.english_dictionary.R
-import biz.moapp.english_dictionary.ui.top.parts_compose.BannerAds
 import biz.moapp.english_dictionary.ui.top.parts_compose.ScrollBarList
 import biz.moapp.english_dictionary.ui.top.parts_compose.SearchBar
 import com.google.android.gms.ads.AdView
@@ -56,9 +55,7 @@ fun TopScreen(modifier: Modifier = Modifier,
             }
         }else {
             /**単語表示**/
-            ScrollBarList(filterData.value, navController)
-            /**バナー広告**/
-            BannerAds(banner)
+            ScrollBarList(filterData.value, navController, banner)
         }
     }
 }

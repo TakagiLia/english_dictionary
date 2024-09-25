@@ -3,7 +3,6 @@ package biz.moapp.english_dictionary.ui.top.parts_compose
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -23,10 +22,13 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import biz.moapp.english_dictionary.data.Language
 import biz.moapp.english_dictionary.navigation.Nav
+import com.google.android.gms.ads.AdView
 
 @Composable
 fun ScrollBarList(filterData: List<Language>,
-                  navController: NavController ){
+                  navController: NavController,
+                  banner: AdView
+){
 
     /**LazyColumn の状態を管理**/
     val listState = rememberLazyListState()
@@ -34,7 +36,7 @@ fun ScrollBarList(filterData: List<Language>,
 
     Box(
         modifier = Modifier
-            .fillMaxHeight(0.9f)
+            .fillMaxSize()
             .padding(horizontal = 8.dp)
     ) {
         LazyColumn(
@@ -58,6 +60,8 @@ fun ScrollBarList(filterData: List<Language>,
                 listState = listState,
             )
         }
+        /**バナー広告**/
+        BannerAds(banner)
     }
 }
 
