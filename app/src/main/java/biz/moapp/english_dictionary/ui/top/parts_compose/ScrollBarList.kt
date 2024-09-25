@@ -51,9 +51,12 @@ fun ScrollBarList(filterData: List<Language>,
                 }
             }
         }
-        ScrollBar(
-            listState = listState,
-        )
+        /**リスト全件表示の場合、スクロールバー表示（リストの数が最後のアイテムのNumと同じ）**/
+        if(filterData.size == filterData.last().num.toInt()) {
+            ScrollBar(
+                listState = listState,
+            )
+        }
     }
 }
 
