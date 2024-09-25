@@ -6,12 +6,13 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -80,9 +81,9 @@ fun SearchResultScreen(modifier: Modifier = Modifier, keyWord :String? = "No Key
 //        SideEffect {
 //            Log.d("--TabRow", "currentPage1: ${viewPagerState.currentPage}")
 //        }
-        ScrollableTabRow(
+       TabRow(
+            modifier = Modifier.fillMaxWidth(),
             selectedTabIndex = viewPagerState.currentPage,
-            edgePadding = 0.dp
         ) {
             tabLabels.forEachIndexed { index, value ->
 //                SideEffect {
