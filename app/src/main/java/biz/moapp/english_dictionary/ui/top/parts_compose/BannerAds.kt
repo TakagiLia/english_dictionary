@@ -13,7 +13,7 @@ import com.google.android.gms.ads.AdView
 @Composable
 fun BannerAds(banner: AdView, maxHeight: Dp){
     /**画面全体を取得　全体の８割の高さのパディング入れる様にする**/
-    val screenHeight = (maxHeight  * 0.85f)
+    val screenHeight = (maxHeight  * 0.9f)
 
     AndroidView(
         modifier = Modifier.fillMaxWidth().padding(top = screenHeight),

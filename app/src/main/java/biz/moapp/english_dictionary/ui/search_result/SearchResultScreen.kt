@@ -28,6 +28,7 @@ import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import biz.moapp.english_dictionary.R
@@ -101,6 +102,7 @@ fun SearchResultScreen(modifier: Modifier = Modifier, keyWord :String? = "No Key
                         Text(
                             text = value,
                             fontWeight = FontWeight.Bold,
+                            fontSize = 12.sp
                         )
                     }
                 )
