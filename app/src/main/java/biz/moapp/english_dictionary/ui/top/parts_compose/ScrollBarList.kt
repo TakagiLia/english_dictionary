@@ -3,6 +3,7 @@ package biz.moapp.english_dictionary.ui.top.parts_compose
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -28,40 +29,42 @@ import com.google.android.gms.ads.AdView
 fun ScrollBarList(filterData: List<Language>,
                   navController: NavController,
                   banner: AdView
-){
+) {
 
     /**LazyColumn の状態を管理**/
     val listState = rememberLazyListState()
     val backStackEntry by navController.currentBackStackEntryAsState()
-
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal = 8.dp)
-    ) {
-        LazyColumn(
-            modifier = Modifier.fillMaxSize().padding(end = 8.dp),
-            state = listState, // 状態を LazyColumn に渡す
-            horizontalAlignment = Alignment.CenterHorizontally
+    BoxWithConstraints {
+        val maxHeight = maxHeight
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = 8.dp)
         ) {
-            items(filterData) { data ->
-                ListItem(data) {
-                    navController.navigate("${Nav.SearchResultScreen.name}/${data.englishMean}") {
-                        backStackEntry?.destination?.route?.let {
-                            popUpTo(it) { inclusive = true }
+            LazyColumn(
+                modifier = Modifier.fillMaxSize().padding(end = 8.dp),
+                state = listState, // 状態を LazyColumn に渡す
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                items(filterData) { data ->
+                    ListItem(data) {
+                        navController.navigate("${Nav.SearchResultScreen.name}/${data.englishMean}") {
+                            backStackEntry?.destination?.route?.let {
+                                popUpTo(it) { inclusive = true }
+                            }
                         }
                     }
                 }
             }
+            /**リスト全件表示の場合、スクロールバー表示（リストの数が最後のアイテムのNumと同じ）**/
+            if (filterData.size == filterData.last().num.toInt()) {
+                ScrollBar(
+                    listState = listState,
+                )
+            }
+            /**バナー広告**/
+            BannerAds(banner, maxHeight)
         }
-        /**リスト全件表示の場合、スクロールバー表示（リストの数が最後のアイテムのNumと同じ）**/
-        if(filterData.size == filterData.last().num.toInt()) {
-            ScrollBar(
-                listState = listState,
-            )
-        }
-        /**バナー広告**/
-        BannerAds(banner)
     }
 }
 
@@ -114,4 +117,4 @@ fun BoxScope.ScrollBar(
                 size = Size(scrollBarWidth.toPx(), scrollbarHeight)
             )
         }
-}
+    }

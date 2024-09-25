@@ -5,17 +5,15 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 
 @Composable
-fun BannerAds(banner: AdView){
+fun BannerAds(banner: AdView, maxHeight: Dp){
     /**画面全体を取得　全体の８割の高さのパディング入れる様にする**/
-    val configuration = LocalConfiguration.current
-    val screenHeight = (configuration.screenHeightDp  * 0.78f).dp
+    val screenHeight = (maxHeight  * 0.85f)
 
     AndroidView(
         modifier = Modifier.fillMaxWidth().padding(top = screenHeight),
