@@ -3,6 +3,7 @@ package biz.moapp.english_dictionary.ui.top.parts_compose
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -33,7 +34,7 @@ fun ScrollBarList(filterData: List<Language>,
 
     Box(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxHeight(0.9f)
             .padding(horizontal = 8.dp)
     ) {
         LazyColumn(

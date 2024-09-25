@@ -42,9 +42,6 @@ fun TopScreen(modifier: Modifier = Modifier,
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        /**バナー広告**/
-        BannerAds(banner)
-        Spacer(modifier = Modifier.height(8.dp))
 
         /**検索バー**/
         SearchBar(modifier, topScreenViewModel)
@@ -60,6 +57,8 @@ fun TopScreen(modifier: Modifier = Modifier,
         }else {
             /**単語表示**/
             ScrollBarList(filterData.value, navController)
+            /**バナー広告**/
+            BannerAds(banner)
         }
     }
 }
