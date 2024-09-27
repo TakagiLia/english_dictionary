@@ -16,6 +16,8 @@ import biz.moapp.english_dictionary.ui.base.BaseScreen
 import biz.moapp.english_dictionary.ui.search_result.SearchResultViewModel
 import biz.moapp.english_dictionary.ui.theme.English_dictionaryTheme
 import biz.moapp.english_dictionary.ui.top.TopScreenViewModel
+import biz.moapp.english_dictionary.utill.AdMobUtil.getBannerAdUnitId
+import biz.moapp.english_dictionary.utill.AdMobUtil.getNativeAdUnitId
 import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
@@ -38,7 +40,7 @@ class MainActivity : ComponentActivity() {
         /**AdMob　バナー広告**/
         val banner = AdView(this)
         banner.setAdSize(AdSize.BANNER)
-        banner.adUnitId = getString(R.string.banner_ad_id_test)
+        banner.adUnitId = getBannerAdUnitId()
         banner.loadAd(AdRequest.Builder().build())
 
         /**ネイティブ広告の初期化**/
@@ -77,7 +79,7 @@ class MainActivity : ComponentActivity() {
             null,
             false
         )
-        AdLoader.Builder(this, getString(R.string.admob_native_unit_id_test))
+        AdLoader.Builder(this, getNativeAdUnitId())
             .forNativeAd { ad ->
                 val nativeAdView = nativeAdLayoutBinding!!.root as NativeAdView
 
