@@ -36,4 +36,15 @@ object JsonUtil {
             listOf(japaneseMeaning)
         }
     }
+
+    /**文字列の文章を「」に囲われている英単語ごとにセンテンスを区切り、リスト化**/
+    fun replaceEnglishWordsWithNumbers(text: String): List<String> {
+        val firstReplaceText = text.replace("「"," 「")
+        val endReplaceText = firstReplaceText.replace("」","」 ")
+        val periodReplaceText = endReplaceText.replace("。","。 ")
+        val punctuationReplaceText = periodReplaceText.replace("、","、 ")
+        val sentenceList = punctuationReplaceText.split(" ")
+        Log.d("--sentenceList","$sentenceList")
+        return sentenceList
+    }
 }

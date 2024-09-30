@@ -63,7 +63,7 @@ class RetrofitOpenAiNetwork @Inject constructor(moshi: Moshi):OpenAiDataSource{
                         "- English example sentences (10, key name: example)\n" +
                         "- English synonyms (key name: synonym) (key name: word) and their Japanese meanings (key name: mean)\n" +
                         "- English antonyms (key name: antonyms) (key name: word) and their Japanese meanings (key name: mean)\n" +
-                        "- Easy-to-understand explanations of English word origins in Japanese (key name: word_roots)"
+                        "- Easy-to-understand explanations of English word origins in Japanese (key name: word_roots, please surround English words with Japanese quotation marks)"
             ),
         ),
     )

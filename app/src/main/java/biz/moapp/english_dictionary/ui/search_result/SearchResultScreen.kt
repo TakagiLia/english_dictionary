@@ -154,7 +154,7 @@ fun SearchResultScreen(modifier: Modifier = Modifier, keyWord :String? = "No Key
                                         }
 
                                         4 -> {
-                                            WordRootsTab(data.wordRoots)
+                                            WordRootsTab(data.wordRoots, tts.value)
                                         }
                                     }
                                 }
