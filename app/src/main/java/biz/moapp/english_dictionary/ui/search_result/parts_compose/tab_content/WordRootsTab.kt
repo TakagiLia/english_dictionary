@@ -21,7 +21,7 @@ fun WordRootsTab(text:String,  tts: TextToSpeech?){
     Log.d("--check1","$sentenceList")
 
     /**UI**/
-    FlowRow {
+    FlowRow(maxItemsInEachRow = 6) {
         sentenceList.forEach { sentence ->
             Log.d("--check2", sentence)
             val onClick = remember(tts, sentence) {

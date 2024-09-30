@@ -41,8 +41,10 @@ object JsonUtil {
     fun replaceEnglishWordsWithNumbers(text: String): List<String> {
         val firstReplaceText = text.replace("「"," 「")
         val endReplaceText = firstReplaceText.replace("」","」 ")
-        val sentenceList = endReplaceText.split(" ")
-        Log.d("--sentenceList","${sentenceList}")
+        val periodReplaceText = endReplaceText.replace("。","。 ")
+        val punctuationReplaceText = periodReplaceText.replace("、","、 ")
+        val sentenceList = punctuationReplaceText.split(" ")
+        Log.d("--sentenceList","$sentenceList")
         return sentenceList
     }
 }
